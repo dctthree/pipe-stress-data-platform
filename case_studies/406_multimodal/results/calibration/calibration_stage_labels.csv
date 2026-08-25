@@ -1,0 +1,8 @@
+stage_id,stage_label,microstrain,nominal_stress_mpa,label_definition,label_scope
+S0,零压力,0.0,0.0,206 GPa × median bending microstrain,calibration only; not load-cell truth
+S1,第一次加压,195.275,40.22665,206 GPa × median bending microstrain,calibration only; not load-cell truth
+S2,第二次加压,444.7,91.6082,206 GPa × median bending microstrain,calibration only; not load-cell truth
+S3,第三次加压,699.9,144.1794,206 GPa × median bending microstrain,calibration only; not load-cell truth
+S4,第四次加压,956.075,196.95145,206 GPa × median bending microstrain,calibration only; not load-cell truth
+S5,第五次加压,1216.225,250.54235,206 GPa × median bending microstrain,calibration only; not load-cell truth
+S6,第六次加压,1482.4,305.3744,206 GPa × median bending microstrain,calibration only; not load-cell truth

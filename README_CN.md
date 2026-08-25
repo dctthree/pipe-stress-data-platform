@@ -1,119 +1,133 @@
 # 管道应力多传感工业数据平台
 
-本工程把管道四点弯牵拉实验整理成可追溯、可增量、可供 MATLAB、Python 和 AI 共用的数据链。它不会修改源目录中的任何文件。
+[English](README.md) · [406 三模态案例](case_studies/406_multimodal/README.md) · [演示数据](demo/README.md) · [AI 数据契约](docs/AI_DATA_CONTRACT.md) · [采集 SOP](docs/工业采集元数据SOP.md)
 
-**当前 P110 EXP2 数据集只有三轴磁传感数据和应变片数据，不包含独立的剩磁信号数据，也不包含涡流 ETP 数据。** 平台架构以后可以为其他实验（例如406实验）增加剩磁和 ETP 独立适配器，但不能把这些模态写成 P110 本次实验已经采集的数据。文件夹或探头名称中涉及磁化节/剩磁工况的文字属于实验硬件或磁化条件命名，不等于存在一套独立采集的剩磁数据模态。
+本项目把磁传感、剩磁、涡流 ETP 和应变片牵拉实验整理成可追溯、可增量、可供 MATLAB、Python 和 AI 共用的数据链：原始文件不可变存档，标准信号、质控、特征和标签分别版本化。
 
-## 首页优先展示真实 P110 数据
+> 当前定位是科研与工程基础设施。只有冻结模型通过独立新管道盲测后，系统才允许开放定量 MPa 输出。
 
-### 现场实验布置
+## 实验范围必须严格区分
 
-以下两张照片来自真实P110四点弯牵拉试验现场，仅用于说明物理实验布置，不作为数据分析输入。
-
-| 试验台与管道整体布置 | 中央加载构件与应变片接线 |
-|---|---|
-| ![P110现场试验整体图](docs/results/field_photos/p110_field_test_overview.jpg) | ![P110压头与应变片布置](docs/results/field_photos/p110_sensor_pull_setup.jpg) |
-
-公开JPEG已完成方向校正、尺寸压缩并删除EXIF/ICC元数据；照片来源和转换记录见[现场照片说明](docs/results/field_photos/README.md)。
-
-### 多传感磁信号结果
-
-下图直接来自**新一轮真实 P110 EXP2 完整双磁极 MEM 多传感实验**，不是合成 Demo。使用5个有效磁传感器（1、3、4、5、6）、两轮完整重复实验、相对各轮零载的X轴削顶感知Q60–Q80分位增量，以及应变片推导弯曲应力。
-
-![真实P110磁信号与应变案例](docs/results/real_p110_magnetic_case.png)
-
-两轮Q60–Q80对应力排序均复现（Spearman ρ约为1），但按图中直接线性拟合计算，跨轮标定斜率仍相差约1.8–2.2倍。因此它是较有说服力的相对应力排序特征，还不是可直接迁移的MPa定量模型。首页不再使用单侧开槽探头作为主要证据。
-
-## 公开全量数据版本
-
-任何读者均可从公开 [v0.2.0 Release](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) 下载冻结的 P110 EXP2 数据包：
-
-| 附件 | 大小 | SHA-256 |
-|---|---:|---|
-| `P110_EXP2_full_release_1.0.0+97b0dca62768.zip` | 169,639,531 字节 | `38cc098c9a590f05efea429073e7c17c0b2c5f8b0232a7625e50957e05fa6a7c` |
-
-解压后以 `dataset_index.json` 为唯一程序入口，不要重新依靠文件名猜测实验阶段。Release 是冻结研究制品；新增实验应创建新配置、独立标签和新数据集版本，禁止覆盖已发布文件。
-
-## 数据分层
-
-| 层级 | 内容 | 约束 |
+| 实验 | 实际包含的数据 | 设计与真值边界 |
 |---|---|---|
-| L0 原始档案 | 原文件字节、SHA-256、原相对路径和采集时间 | 只增不改；同一哈希只保存一次 |
-| L1 标准信号 | 统一的 `scan_id / sample_index / sensor_id / axis / value_raw` | 保留原始量纲；不把滤波结果覆盖原始值 |
-| L2 质量与特征 | 文件、扫描、通道三级 QC；基础统计和相对零载特征 | 每个特征记录算法版本、参数和基线扫描 |
-| L3 AI 样本 | 一次牵拉一行的特征矩阵、标签状态、分组键 | 盲测标签与训练标签隔离；按管道/实验轮次分组 |
+| P110 EXP2 | 三轴磁传感 + 应变片 | 公开包含两次完整重复；没有独立剩磁数据，也没有 ETP。 |
+| 406 标定批次 | 同一磁 CSV 内按物理列奇偶拆分的 MEM/剩磁 + 应变片 | 零载 S0 + 6 个加载状态 S1–S6。MPa 是 `206 GPa × 中位弯曲应变`，不是载荷传感器实测值；该批次没有逐阶段 ETP。 |
+| 406 盲测重复 | 同一 MEM/剩磁磁流 + 独立 20 通道复数 ETP | C1、C2 为 S0–S6 完整周期；C3 只有 S0–S2，共 17 个配对包。没有本轮同步应变或 MPa 真值。 |
 
-默认输出位于 `lake/`：
+406 磁 CSV 有 32 个物理列，每列 10 个探头。1-based 奇数物理列为 160 个剩磁通道，偶数物理列为 160 个 MEM 通道。两类磁信号共用同一套 1307 字段 CSV，并非两套独立文件；ETP 才是独立采集的数据流。
 
-```text
-lake/
-  raw/blobs/sha256/       # 内容寻址的不可变原始文件
-  catalog/                # CSV/Parquet 清单、SQLite 目录库
-  silver/signals/         # 按标准化算法ID分区，每次牵拉一个 Parquet
-  gold/                   # 通道特征和 AI 特征矩阵
-  runs/                   # 每次处理的审计记录
-  dataset_index.json      # AI/程序的唯一入口
+## 真实 406 实验证据
+
+### 现场布置
+
+| 406 管道内检测器与试验管段 | 四点弯加载与应变片布置 |
+|---|---|
+| ![406管道内检测器](docs/results/field_photos/406/406_inline_inspection_tool_setup.jpg) | ![406四点弯与应变片](docs/results/field_photos/406/406_four_point_bending_strain_setup.jpg) |
+
+照片只用于说明实验场景，不参与数值分析。公开副本已完成 sRGB 转换、尺寸压缩和元数据清除；来源及第一张背景人员的隐私说明见[现场照片记录](docs/results/field_photos/406/README.md)。
+
+### 应变对应与跨周期复核
+
+下图来自真实 406 标定轮和应变片推导的名义弯曲应力。它能说明开发轮内的力学对应关系，但只有一个标定序列，不能当作独立验证结果。
+
+![406真实标定特征](docs/results/real_406_calibration_features.png)
+
+下图展示盲测重复中实际存在的全部数据包，保留了 C2/S2 的操作员备注与 `REJECT`，也保留了 C3 只有三个状态且幅值尺度不同的事实。
+
+![406剩磁三周期真实结果](docs/results/real_406_repeatability.png)
+
+当前最稳妥的工程策略为：
+
+- 剩磁 `MAG-F1-DW-Q90-v1` 是同管、同会话相对排序/变化的主特征。排除预先声明的 C2/S2 质控失败后，C1↔C2 的 Spearman ρ = 1.000、Lin CCC = 0.996、归一化 RMSE = 3.35%。
+- MEM `MEM-F4-ZSD-v1` 是必须使用同周期 S0 的无符号辅助复核；严格 C1↔C2 的 CCC = 0.980、归一化 RMSE = 7.51%。
+- ETP 候选的负对照响应可与目标响应一样强，因此当前只能做 QC、混杂/负对照告警和研究候选，不能称为应力量值。
+- 当前三模态程序实现的是 fail-closed 的模态资格/QC 门控。由于 ETP 未通过整轮门限，结果保持“仅磁相对量”，不生成数值融合值或盲测 MPa。逐阶段跨模态方向冲突评分仍是后续必须增加的门，不是本版本已经实现的结果。
+
+公式、全部派生表、13 张可从盲测原始数据重跑的图，以及 1 张附派生值与重绘程序的冻结标定图，见[406 三模态完整案例](case_studies/406_multimodal/README.md)。
+
+## 真实 P110 证据
+
+P110 EXP2 只有磁探头和应变片数据。探头/文件夹名称中出现“磁化节”或“剩磁”只代表硬件工况，不等于另有一套独立剩磁测量。
+
+![P110真实磁信号与应变案例](docs/results/real_p110_magnetic_case.png)
+
+完整双磁极 MEM 方案的五个有效传感器在两轮中能重复应力排序，但直接拟合斜率仍明显变化，因此适合作为相对排序候选，不能直接迁移为通用 MPa 标定。P110 现场图见[照片说明](docs/results/field_photos/README.md)。
+
+## 平台解决的问题
+
+实际牵拉实验常混合多段 CSV、应变导出、加载记录、重复阶段和人工目录名，容易发生原始数据覆盖、阶段错配、盲测标签泄漏以及把采样点频率误写成 Hz 等问题。
+
+```mermaid
+flowchart LR
+    A[新实验入库] --> B[SHA-256不可变存档]
+    B --> C[格式与元数据质控]
+    C --> D[各模态标准表]
+    D --> E[进管/焊缝/出管配准]
+    E --> F[版本化特征库]
+    F --> G[防泄漏AI矩阵]
+    G --> H{工程门限}
+    H -->|通过| I[相对评估]
+    H -->|失败| J[拒收/复核]
 ```
 
-## 首次运行
+主要能力包括：
 
-当前机器可直接使用已有 Python 环境：
+- SHA-256 内容寻址、原始数据去重和不可变快照；
+- 可配置磁通道布局及 406 奇偶物理列合同；
+- 大体量分片 CSV 和 XLSX 流式读取；
+- 进管、焊缝、出管地标配准及几何质控；
+- 削顶、哨兵值、温度、分片连续性和负对照门限；
+- 特征、标签、实验分组和数据指纹分别版本化；
+- CSV、Parquet、SQLite、MATLAB 与 Python 接口。
+
+## 公开数据版本
+
+原始实验文件不写入 Git 历史，而是作为不可变 Release 附件公开。
+
+| Release | 内容 | 程序入口 |
+|---|---|---|
+| [v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) | P110 EXP2 磁数据与应变片全量包 | ZIP 内的 `dataset_index.json` |
+| [v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) | 406 标定 MEM/剩磁+应变，以及 17 包盲测 MEM/剩磁/ETP | `release_index.json`、`raw_file_manifest.csv`、`SHA256SUMS.txt` |
+
+禁止通过文件名重新猜阶段。必须从公开索引读取，并原样保留缺失阶段和 QC 失败。
+
+## 小型结构演示
+
+仓库内的小 Demo 是确定性、匿名化的 P110 类磁数据，只验证数据管道结构，不是现场实验或应力反演证据。
 
 ```powershell
-cd pipe-stress-data-platform
-python run_pipeline.py run `
-  --config configs\p110_exp2.json `
-  --output lake `
-  --snapshot-mode blob
+python -m pip install -e ".[demo]"
+python demo/run_demo.py --regenerate
 ```
 
-日后加入新文件后执行同一命令即可。哈希未变化的原始文件会复用；新文件会增量登记并生成新的数据集版本指纹。
+![合成阅读器Demo——非实验证据](demo/results/demo_stage_signals.png)
 
-独立复核所有目录外键、分区、盲态隔离以及不可变原始副本哈希：
+## 接入本地新实验
+
+1. 复制 [configs/experiment_template.json](configs/experiment_template.json)。
+2. 注册管号、探头布局、轮次/阶段映射和信号格式。
+3. 真值标签保存在独立 CSV；盲测数据的应力字段留空。
+4. 执行：
 
 ```powershell
-python run_pipeline.py validate `
-  --output lake --full-hash
+python run_pipeline.py run --config path/to/experiment.json --output lake --snapshot-mode blob
+python run_pipeline.py validate --output lake --full-hash
 ```
 
-仅检查而不保存原始副本：
+AI 程序应只读取 `lake/dataset_index.json`，不要扫描原始目录猜测工况。MATLAB R2024b 接口：
 
-```powershell
-python run_pipeline.py run `
-  --config configs\p110_exp2.json --output lake --snapshot-mode reference
+```matlab
+addpath('matlab');
+d = loadStressDataset('lake/dataset_index.json');
 ```
 
-## 关键输出
+## 结论边界
 
-- `catalog/raw_files.csv`：所有源文件及哈希、角色和不可变副本位置。
-- `catalog/scans.csv`：一次牵拉一行的工况、传感方案、加载位移、钟点、重复编号和标签。
-- `catalog/events.csv`：自动管端与压头/支墩几何先验；自动检测和几何推算来源严格区分。
-- `catalog/assets/probes/channels`：管道、探头与原始列—传感器—轴映射注册表。
-- `catalog/qc_checks.csv`：可机器判定的质量门禁。
-- `silver/signals/<标准化算法ID>/<scan_id>.parquet`：统一长表信号。
-- `gold/channel_features.parquet`：逐传感器、逐轴特征。
-- `gold/ml_feature_matrix.parquet`：一次牵拉一行，可直接供模型训练或盲评。
-- `catalog/catalog.sqlite`：AI、Python 或业务系统可直接查询的目录数据库。
-- `dataset_index.json`：数据集版本、文件计数、QC 汇总和各表地址。
+- 同一根管道的重复性不能替代新管道迁移验证。
+- 没有编码器和速度核验时，归一化位置不是米制距离。
+- 不知道采样率时，采样域粗糙度不能解释成 Hz。
+- 主通道 QC 失败不能由另一模态“救回”。
+- 相对变化无法从单次扫描辨识总残余应力。
+- 只有完成冻结标定、不确定度评估和独立盲测后，才允许开放直接 MPa 输出。
 
-CSV 用 UTF-8 with BOM，便于中文 Windows/Excel 打开；Parquet 用于保持类型和高效 AI 读取。
-
-## 新实验接入规则
-
-1. 原始文件放到独立实验目录，禁止在原始目录中保存分析图片和结果表。
-2. 复制 `configs/experiment_template.json`，填写管道、探头、磁化方式、轴序和路径映射。
-3. 新建独立标签 CSV。未知应力保留空值，`label_status=blind`，不得用位移冒充应力标签。
-4. 必须记录采样率、编码器/牵拉速度、提离、磁化电流、探头序列号、操作者和时间；缺失字段会进入 QC。
-5. 同一根管道的重复牵拉必须共享 `pipe_id`，不同轮次使用不同 `run_id`，模型划分使用 `split_group`，防止同轮数据同时落入训练集和测试集。
-
-## 不允许的做法
-
-- 不允许手工改写原 CSV 后仍沿用原文件名。
-- 不允许把应变真值硬编码在分析程序里；标签必须单独版本化。
-- 不允许在不知道采样率/速度时解释 Hz 频谱或把采样点直接当物理距离。
-- 不允许 QC 失败后仍输出 MPa；可输出原始特征和“拒判”状态。
-- 不允许随机按单条扫描拆分训练/测试；至少按 `pipe_id + run_id` 分组。
-
-## MATLAB 与 AI
-
-MATLAB R2024b 可使用 `matlab/loadStressDataset.m` 读取索引、扫描表、特征矩阵及指定牵拉信号。Python/AI 可使用 `examples/ai_loader_example.py`。接口只依赖 `dataset_index.json`，因此后续数据目录可迁移而无需修改模型代码。
+Git 中只保存代码、格式、模板、测试、小型派生表、结果图和说明；原始实验文件与大型压缩包放在 GitHub Releases。项目默认不授予开源许可，详见 [NOTICE.md](NOTICE.md)。

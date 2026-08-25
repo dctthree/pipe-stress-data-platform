@@ -1,0 +1,4 @@
+cycle_id,physical_columns_same_sign_as_C1,physical_columns_total,circumferential_positions_same_sign_as_C1,circumferential_positions_total,physical_slope_vector_pearson,circumferential_slope_vector_pearson,has_baseline
+C1,16,16,10,10,1,1,1
+C2,16,16,10,10,0.998332544033786,0.956513800099651,1
+C3,16,16,10,10,0.987353579962117,0.912776029604605,1

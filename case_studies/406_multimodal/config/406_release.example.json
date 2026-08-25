@@ -1,0 +1,82 @@
+{
+  "systemName": "406管道三周期MEM-剩磁-ETP盲评Demo",
+  "version": "1.0.0",
+  "magneticRoot": "raw/blind",
+  "etpRoot": "raw/blind",
+  "outputRoot": "runtime/results/latest",
+  "cacheFile": "runtime/cache/blind406_stage_profiles.mat",
+  "forceRebuildCache": false,
+  "randomSeed": 406202608,
+  "cycles": [
+    {"id": "C1", "magneticFolder": "C1/magnetic", "etpFolder": "C1/etp"},
+    {"id": "C2", "magneticFolder": "C2/magnetic", "etpFolder": "C2/etp"},
+    {"id": "C3", "magneticFolder": "C3/magnetic", "etpFolder": "C3/etp"}
+  ],
+  "stages": [
+    {"id": "S0", "ordinal": 0, "folder": "零压力测试"},
+    {"id": "S1", "ordinal": 1, "folder": "第一次加压"},
+    {"id": "S2", "ordinal": 2, "folder": "第二次加压"},
+    {"id": "S3", "ordinal": 3, "folder": "第三次加压"},
+    {"id": "S4", "ordinal": 4, "folder": "第四次加压"},
+    {"id": "S5", "ordinal": 5, "folder": "第五次加压"},
+    {"id": "S6", "ordinal": 6, "folder": "第六次加压"}
+  ],
+  "layout": {
+    "physicalColumns": 32,
+    "circumferentialPositions": 10,
+    "probes": 320,
+    "oneBasedOddPhysicalColumns": "remanence",
+    "oneBasedEvenPhysicalColumns": "MEM",
+    "primaryRemanenceField": "X",
+    "auxiliaryMEMField": "Z"
+  },
+  "spatial": {
+    "leftSupport": -0.5530149952142933,
+    "leftHead": -0.4324860860009217,
+    "weld": 0.0,
+    "rightHead": 0.41660575939190175,
+    "rightSupport": 0.5481654728840812,
+    "fixtureHalfWidth": 0.033,
+    "weldExclusionHalfWidth": 0.035,
+    "outsideLimit": 0.90,
+    "magneticGridPoints": 2001,
+    "etpGridPoints": 1001
+  },
+  "landmarks": {
+    "priorMagneticInPipeSpanSamples": 55492,
+    "allowedSpanRelativeDeviation": 0.10,
+    "maximumLegacyDifferenceFraction": 0.03,
+    "minimumLeftRightSpanRatio": 0.70,
+    "maximumLeftRightSpanRatio": 1.43,
+    "knownWarnCycle": "C2",
+    "knownWarnStage": "S2"
+  },
+  "features": {
+    "f1Id": "MAG-F1-DW-Q90-v1",
+    "f4Id": "MEM-F4-ZSD-v1",
+    "etpE1Id": "ETP-E1-CDIFF-v1",
+    "windowShifts": [-0.025, 0.0, 0.025],
+    "windowHalfWidths": [0.026, 0.033, 0.042],
+    "priorF1FullScale": 1.5734545298226283,
+    "priorF1Range": [0.14314182121007368, 1.716596351032702],
+    "cycle1RegressionF1": [0.10194284765274952, 0.24859087554357062, 0.4803874445384877, 0.8110722719861823, 1.1278343625030796, 1.318364905018003, 1.476402902452211],
+    "etpPhaseUnit": "radian_assumption_requires_hardware_confirmation"
+  },
+  "quality": {
+    "minimumETPGoodChannelFraction": 0.90,
+    "minimumCompleteCycleSpearman": 0.90,
+    "minimumCrossCycleSpearman": 0.90,
+    "minimumProvisionalCCC": 0.85,
+    "minimumEngineeringCCC": 0.90,
+    "maximumNormalizedRMSE": 0.15,
+    "maximumF1FullScaleCVPercent": 5.0,
+    "minimumWindowMedianSpearman": 0.90,
+    "minimumWindowWorstSpearman": 0.80,
+    "minimumETPLoadedSpearman": 0.90,
+    "minimumETPLoadedKendall": 0.80,
+    "minimumETPTargetNegativeControlRatio": 1.5,
+    "minimumETPPositiveChannelFraction": 0.70,
+    "maximumTemperatureOrdinalAbsSpearman": 0.95,
+    "maximumRemanenceXSaturationFraction": 0.01
+  }
+}

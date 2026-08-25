@@ -37,6 +37,10 @@ def run(regenerate: bool, ci: bool) -> dict:
     validation = validate_dataset(output_root, full_hash=True)
     if validation["overall_status"] != "PASS":
         raise RuntimeError(f"Demo validation failed: {validation}")
+    # The validation report is timestamped for runtime auditing. Exclude that
+    # volatile field from the tracked demo summary so regeneration is stable.
+    public_validation = dict(validation)
+    public_validation.pop("validated_at_utc", None)
     results_root.mkdir(parents=True, exist_ok=True)
     plot_stage_signals(output_root, results_root)
     plot_stress_feature(output_root, results_root)
@@ -44,7 +48,7 @@ def run(regenerate: bool, ci: bool) -> dict:
         "dataset_id": index["dataset_id"],
         "dataset_version": index["dataset_version"],
         "counts": index["counts"],
-        "validation": validation,
+        "validation": public_validation,
         "direct_mpa_output_enabled": index["label_policy"]["direct_mpa_prediction_enabled"],
         "demo_data_notice": "Deterministic de-identified structural demo; not experimental evidence.",
     }
@@ -97,4 +101,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

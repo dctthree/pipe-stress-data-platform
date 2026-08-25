@@ -1,0 +1,4 @@
+cycle_id,stage_count,complete_cycle,loaded_spearman,loaded_kendall,loaded_adjacent_increases,loaded_adjacent_expected,exact_one_sided_p,leave_one_channel_rho_minimum,positive_channel_fraction,channel_bootstrap_P_S1_gt_S0,target_to_E5E6_negative_control_range_ratio,temperature_ordinal_spearman,good_channels,passed_gate_count,total_gate_count,all_required_gates_pass
+C1,7,1,0.657142857142857,0.466666666666667,3,5,0.0875,0.657142857142857,0.6,0.191,0.124009567483748,1,20,2,13,0
+C2,7,1,-0.371428571428571,-0.333333333333333,1,5,0.790277777777778,-0.371428571428571,0.25,1,0.457556299118902,0.474341649025257,20,3,13,0
+C3,3,0,-1,-1,0,1,NaN,-1,0.35,0.988,0.109733171719996,0.866025403784439,20,4,13,0

@@ -23,6 +23,9 @@ build/
 *.asv
 *.m~
 slprj/
+case_studies/406_multimodal/raw/
+case_studies/406_multimodal/cache/
+case_studies/406_multimodal/runtime/
 
 # IDE/OS
 .idea/

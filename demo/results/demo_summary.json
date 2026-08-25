@@ -1,6 +1,6 @@
 {
   "dataset_id": "DEMO_P110_MEM_001",
-  "dataset_version": "1.0.0+596cc3ff0eaf",
+  "dataset_version": "1.0.0+6797c132041c",
   "counts": {
     "source_files": 5,
     "sensor_scans_discovered": 5,
@@ -15,8 +15,7 @@
   "validation": {
     "schema_version": "1.0",
     "dataset_id": "DEMO_P110_MEM_001",
-    "dataset_version": "1.0.0+596cc3ff0eaf",
-    "validated_at_utc": "2026-08-25T01:39:04+00:00",
+    "dataset_version": "1.0.0+6797c132041c",
     "full_blob_hash_validation": true,
     "overall_status": "PASS",
     "check_count": 40,

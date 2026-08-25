@@ -1,0 +1,168 @@
+{
+    "schema_version":  "pipe-stress-release-index/1.0",
+    "release":  "406-v0.3.0",
+    "generated_utc":  "2026-08-25T05:09:00.6851259Z",
+    "dataset":  "406-pipe MEM/remanence/ETP pull-test public research release",
+    "truth_policy":  {
+                         "calibration_nominal_stress":  "206 GPa x median bending microstrain; derived, not load-cell truth",
+                         "blind_cycles_have_stress_truth":  false,
+                         "absolute_MPa_claim_supported":  false,
+                         "missing_stage_imputation":  false
+                     },
+    "cycle_design":  [
+                         {
+                             "cycle":  "C1",
+                             "stages":  "S0-S6",
+                             "completeness":  "complete"
+                         },
+                         {
+                             "cycle":  "C2",
+                             "stages":  "S0-S6",
+                             "completeness":  "complete_source_with_S2_REJECT"
+                         },
+                         {
+                             "cycle":  "C3",
+                             "stages":  "S0-S2",
+                             "completeness":  "partial"
+                         }
+                     ],
+    "frozen_qc_exclusions":  [
+                                 {
+                                     "cycle":  "C2",
+                                     "stage":  "S2",
+                                     "applies_to":  "magnetic_primary_decision",
+                                     "status":  "REJECT_WELD_NOT_CENTERED",
+                                     "paired_etp_status":  "PASS_ETP_PAIRED_MAGNETIC_REJECT",
+                                     "reason":  "magnetic weld event not centered; ETP stage passes its own QC but cannot rescue the paired magnetic-primary packet"
+                                 }
+                             ],
+    "assets":  [
+                   {
+                       "asset_name":  "406_blind_C1_etp_v0.3.0.zip",
+                       "format":  "zip",
+                       "dataset_partition":  "blind",
+                       "modality":  "ETP_eddy_current",
+                       "cycle":  "C1",
+                       "stage_coverage":  "S0,S1,S2,S3,S4,S5,S6",
+                       "complete_cycle":  true,
+                       "qc_exclusions":  "",
+                       "file_count":  40,
+                       "uncompressed_bytes":  226369912,
+                       "bytes":  16701620,
+                       "sha256":  "462db91ac2816be1daff899dd543c3a2abf31fd6b2398405a63bd8bf17b593ac",
+                       "notes":  "Complete source cycle S0-S6. ETP is released as a registered candidate/QC modality, not an absolute stress truth."
+                   },
+                   {
+                       "asset_name":  "406_blind_C1_magnetic_v0.3.0.zip",
+                       "format":  "zip",
+                       "dataset_partition":  "blind",
+                       "modality":  "magnetic_shared_MEM_remanence",
+                       "cycle":  "C1",
+                       "stage_coverage":  "S0,S1,S2,S3,S4,S5,S6",
+                       "complete_cycle":  true,
+                       "qc_exclusions":  "",
+                       "file_count":  37,
+                       "uncompressed_bytes":  4258587476,
+                       "bytes":  938574533,
+                       "sha256":  "66ab2a04aae18c1fa3a8c2b131385c3ba91b6d6b9a55e90bf627bbb94d539d8a",
+                       "notes":  "Complete source cycle S0-S6."
+                   },
+                   {
+                       "asset_name":  "406_blind_C2_etp_v0.3.0.zip",
+                       "format":  "zip",
+                       "dataset_partition":  "blind",
+                       "modality":  "ETP_eddy_current",
+                       "cycle":  "C2",
+                       "stage_coverage":  "S0,S1,S2,S3,S4,S5,S6",
+                       "complete_cycle":  true,
+                       "qc_exclusions":  "",
+                       "file_count":  40,
+                       "uncompressed_bytes":  225972635,
+                       "bytes":  15770535,
+                       "sha256":  "6908a6b747fcdc9e8b687d1938913e02be04bbbafd37cc719f56c14372b4c234",
+                       "notes":  "Complete ETP source cycle. ETP C2/S2 passes its own QC (PASS_ETP_PAIRED_MAGNETIC_REJECT), but the paired magnetic primary channel is rejected."
+                   },
+                   {
+                       "asset_name":  "406_blind_C2_magnetic_v0.3.0.zip",
+                       "format":  "zip",
+                       "dataset_partition":  "blind",
+                       "modality":  "magnetic_shared_MEM_remanence",
+                       "cycle":  "C2",
+                       "stage_coverage":  "S0,S1,S2,S3,S4,S5,S6",
+                       "complete_cycle":  true,
+                       "qc_exclusions":  "S2: REJECT_WELD_NOT_CENTERED",
+                       "file_count":  43,
+                       "uncompressed_bytes":  4732501993,
+                       "bytes":  1046805800,
+                       "sha256":  "99cb5d376b0b492326e0e78b0f8b009efc123ec52c1ee013ba1f10717891a313",
+                       "notes":  "Complete source cycle; magnetic-primary C2/S2 is REJECT because the magnetic weld event is not centered."
+                   },
+                   {
+                       "asset_name":  "406_blind_C3_etp_partial_v0.3.0.zip",
+                       "format":  "zip",
+                       "dataset_partition":  "blind",
+                       "modality":  "ETP_eddy_current",
+                       "cycle":  "C3",
+                       "stage_coverage":  "S0,S1,S2",
+                       "complete_cycle":  false,
+                       "qc_exclusions":  "",
+                       "file_count":  17,
+                       "uncompressed_bytes":  95802954,
+                       "bytes":  6700161,
+                       "sha256":  "8e372929ba413479e6a17884ec530aa618fac3bbfcea4fc0dc6abebcbfcdc1da",
+                       "notes":  "PARTIAL cycle: S0-S2 only; missing S3-S6 are not imputed. ETP is released as a registered candidate/QC modality, not an absolute stress truth."
+                   },
+                   {
+                       "asset_name":  "406_blind_C3_magnetic_partial_v0.3.0.zip",
+                       "format":  "zip",
+                       "dataset_partition":  "blind",
+                       "modality":  "magnetic_shared_MEM_remanence",
+                       "cycle":  "C3",
+                       "stage_coverage":  "S0,S1,S2",
+                       "complete_cycle":  false,
+                       "qc_exclusions":  "",
+                       "file_count":  17,
+                       "uncompressed_bytes":  1954592938,
+                       "bytes":  428474436,
+                       "sha256":  "93d3bce0ecad5d31a9b67bc2f992e7d80367f73bc8dbf450a8d3ab9691581edb",
+                       "notes":  "PARTIAL cycle: S0-S2 only; missing S3-S6 are not imputed."
+                   },
+                   {
+                       "asset_name":  "406_calibration_magnetic_v0.3.0.zip",
+                       "format":  "zip",
+                       "dataset_partition":  "calibration",
+                       "modality":  "magnetic_shared_MEM_remanence",
+                       "cycle":  "CAL",
+                       "stage_coverage":  "S0,S1,S2,S3,S4,S5,S6",
+                       "complete_cycle":  null,
+                       "qc_exclusions":  "",
+                       "file_count":  35,
+                       "uncompressed_bytes":  3926477754,
+                       "bytes":  847470019,
+                       "sha256":  "d3e2be288830d679560042514c796e88fcb4a7558aba4940a37a95a81640572e",
+                       "notes":  "Seven-state calibration magnetic pulls; MEM/remanence share each magnetic CSV."
+                   },
+                   {
+                       "asset_name":  "406_calibration_strain_v0.3.0.zip",
+                       "format":  "zip",
+                       "dataset_partition":  "calibration",
+                       "modality":  "strain_gauge_and_derived_labels",
+                       "cycle":  "CAL",
+                       "stage_coverage":  "S0,S1,S2,S3,S4,S5,S6; source workbook also contains unloading/residual records",
+                       "complete_cycle":  null,
+                       "qc_exclusions":  "",
+                       "file_count":  5,
+                       "uncompressed_bytes":  8795233,
+                       "bytes":  8566744,
+                       "sha256":  "ede70bbb5402049eedd0979af6b4261cbc69b2fd99661fabe0b852c81e8e2c03",
+                       "notes":  "Nominal stress labels are calibration-derived as 206 GPa x median bending strain; they are not load-cell truth and are not blind-cycle labels."
+                   }
+               ],
+    "metadata_files":  [
+                           "DATASET_CARD.md",
+                           "channel_schema.csv",
+                           "raw_file_manifest.csv",
+                           "release_index.json",
+                           "SHA256SUMS.txt"
+                       ]
+}

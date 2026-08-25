@@ -22,4 +22,9 @@ jobs:
       - name: Reader demo
         shell: pwsh
         run: python demo/run_demo.py --regenerate --ci
-
+      - name: Verify deterministic demo summary
+        shell: pwsh
+        run: git diff --exit-code -- demo/results/demo_summary.json
+      - name: Validate frozen 406 multimodal evidence
+        shell: pwsh
+        run: python case_studies/406_multimodal/validate_case.py

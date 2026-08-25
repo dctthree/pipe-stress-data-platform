@@ -9,34 +9,17 @@ if ([string]::IsNullOrWhiteSpace($OutputDirectory)) {
 }
 New-Item -ItemType Directory -Path $OutputDirectory -Force | Out-Null
 
-$codeZip = Join-Path $OutputDirectory 'stress_data_platform_code_v0.2.0.zip'
+$codeZip = Join-Path $OutputDirectory 'stress_data_platform_code_v0.3.0.zip'
 if (Test-Path -LiteralPath $codeZip) {
     throw "交付包已存在，请先人工归档或改名：$codeZip"
 }
-$codeItems = @(
-    (Join-Path $root 'src'),
-    (Join-Path $root 'configs\experiment_template.json'),
-    (Join-Path $root 'configs\p110_exp2.example.json'),
-    (Join-Path $root 'labels\labels_template.csv'),
-    (Join-Path $root 'schemas'),
-    (Join-Path $root 'matlab'),
-    (Join-Path $root 'examples'),
-    (Join-Path $root 'demo\README.md'),
-    (Join-Path $root 'demo\config'),
-    (Join-Path $root 'demo\labels'),
-    (Join-Path $root 'demo\generate_demo_data.py'),
-    (Join-Path $root 'demo\run_demo.py'),
-    (Join-Path $root 'demo\results'),
-    (Join-Path $root 'docs'),
-    (Join-Path $root 'tests'),
-    (Join-Path $root 'README_CN.md'),
-    (Join-Path $root '系统构建与数据验收报告.md'),
-    (Join-Path $root 'pyproject.toml'),
-    (Join-Path $root 'run_pipeline.py'),
-    (Join-Path $root 'run_p110_exp2.ps1'),
-    (Join-Path $root 'package_delivery.ps1')
-)
-Compress-Archive -LiteralPath $codeItems -DestinationPath $codeZip -CompressionLevel Optimal
+# Archive only committed files. This prevents ignored raw/, runtime/, lake/
+# and local release-staging trees (including junctions) from entering a code
+# delivery merely because they exist beside the source checkout.
+& git -C $root archive --format=zip --output=$codeZip HEAD
+if ($LASTEXITCODE -ne 0) {
+    throw "git archive failed with exit code $LASTEXITCODE"
+}
 
 $indexPath = Join-Path $root 'lake\dataset_index.json'
 $index = Get-Content -LiteralPath $indexPath -Raw -Encoding UTF8 | ConvertFrom-Json
