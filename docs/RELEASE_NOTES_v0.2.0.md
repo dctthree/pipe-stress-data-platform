@@ -6,7 +6,7 @@
 
 - 可追溯管道应力实验数据处理平台；
 - 匿名、确定性 P110 类磁信号阅读者 Demo 及独立应变标签；
-- [P110 真实磁传感+应变一级案例](../case_studies/p110_magnetic_strain/README.md)：冻结派生表、真实结果图、Python/MATLAB 重绘程序、完整脱敏配置和失败闭锁校验；
+- [P110 真实磁传感+应变一级案例](https://github.com/dctthree/pipe-stress-data-platform/tree/main/case_studies/p110_magnetic_strain)：冻结派生表、真实结果图、Python/MATLAB 重绘程序、完整脱敏配置和失败闭锁校验；
 - Python/MATLAB 数据读取接口；
 - 数据质量、血缘、盲态隔离与版本指纹验证；
 - 经明确授权公开的 P110 EXP2 全量数据附件：原始快照、标准化磁信号、应变、特征、目录和校验信息。
