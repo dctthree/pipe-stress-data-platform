@@ -1,4 +1,4 @@
-# Pipe Stress Data Platform
+# Pipe Stress Data Magnetic Sensing Platform
 
 [中文说明](README_CN.md) · [Demo](demo/README.md) · [AI data contract](docs/AI_DATA_CONTRACT.md) · [Acquisition SOP](docs/工业采集元数据SOP.md)
 
