@@ -65,6 +65,16 @@ Expected outputs:
 
 Modality scope: three-axis magnetic probe signals plus strain-gauge records. No ETP channels are present. Names that describe a magnetizing section or probe condition are experimental hardware labels, not an additional independently acquired remanence modality.
 
+The following figure is generated from the **real P110 EXP2 measurements**, not from the synthetic reader demo. It shows a QC-passing single-side-slotted MEM run at 6 and 12 o'clock. The real data support visible zero/load distribution changes, but they do not justify claiming a strictly monotonic magnetic-to-stress calibration across every stage.
+
+![Real P110 magnetic and strain case study](docs/results/real_p110_magnetic_case.png)
+
+Recreate it after downloading/extracting the private full-data release:
+
+```powershell
+python examples/generate_real_p110_case.py --lake path/to/extracted_release
+```
+
 The local full-data run used 211 source files:
 
 | Item | Result |
