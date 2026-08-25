@@ -1,0 +1,28 @@
+{
+  "dataset_id": "DEMO_P110_MEM_001",
+  "dataset_version": "1.0.0+596cc3ff0eaf",
+  "counts": {
+    "source_files": 5,
+    "sensor_scans_discovered": 5,
+    "sensor_scans_completed": 5,
+    "sensor_scans_failed": 0,
+    "primary_stress_feature_qc_failed": 0,
+    "strain_files_standardized": 0,
+    "strain_values_standardized": 0,
+    "channel_feature_rows": 75,
+    "ingest_errors": 0
+  },
+  "validation": {
+    "schema_version": "1.0",
+    "dataset_id": "DEMO_P110_MEM_001",
+    "dataset_version": "1.0.0+596cc3ff0eaf",
+    "validated_at_utc": "2026-08-25T01:39:04+00:00",
+    "full_blob_hash_validation": true,
+    "overall_status": "PASS",
+    "check_count": 40,
+    "failed_check_count": 0,
+    "warning_check_count": 0
+  },
+  "direct_mpa_output_enabled": false,
+  "demo_data_notice": "Deterministic de-identified structural demo; not experimental evidence."
+}

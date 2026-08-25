@@ -1,0 +1,7 @@
+run_id,stage_mm,clock_position,recovery_min,stress_mpa_magnitude,local_axial_stress_mpa,label_status,label_source,label_version,use_for_supervised,notes
+demo_mem_r1,0,6,,0,0,demo,deterministic_demo_formula,demo_labels_v1,true,Not experimental evidence
+demo_mem_r1,20,6,,42,42,demo,deterministic_demo_formula,demo_labels_v1,true,Not experimental evidence
+demo_mem_r1,40,6,,86,86,demo,deterministic_demo_formula,demo_labels_v1,true,Not experimental evidence
+demo_mem_r1,60,6,,130,130,demo,deterministic_demo_formula,demo_labels_v1,true,Not experimental evidence
+demo_mem_r1,80,6,,174,174,demo,deterministic_demo_formula,demo_labels_v1,true,Not experimental evidence
+

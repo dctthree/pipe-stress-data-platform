@@ -1,0 +1,31 @@
+# Local/raw data and generated releases
+lake/
+deliverables/
+configs/p110_exp2.json
+labels/p110_exp2_stress_labels.csv
+
+# Demo generated inputs and runtime outputs
+demo/input/
+demo/output/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# MATLAB/runtime
+*.asv
+*.m~
+slprj/
+
+# IDE/OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+

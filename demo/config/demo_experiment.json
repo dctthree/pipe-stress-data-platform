@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "experiment": {
+    "experiment_id": "DEMO_P110_MEM_001",
+    "campaign_id": "DEMO_FOUR_POINT_BEND",
+    "pipe_id": "DEMO_P110_PIPE_001",
+    "material": "P110-like synthetic",
+    "pipe_length_m": 10.54,
+    "outer_diameter_mm": 139.70,
+    "wall_thickness_mm": 9.17,
+    "yield_strength_mpa": 853.0,
+    "tensile_strength_mpa": 930.0,
+    "inner_head_half_span_m": 1.95,
+    "support_half_span_m": 4.11,
+    "weld_positions_from_center_m": [0.0],
+    "source_root": "../input"
+  },
+  "discovery": {
+    "exclude_directory_names": ["results", "output", "figures", "lake", ".git"],
+    "strain_directory_markers": ["strain"],
+    "sensor_extensions": [".csv"],
+    "strain_extensions": [".xlsx", ".txt"],
+    "protocol_extensions": [".md"]
+  },
+  "filename_parser": {
+    "pattern": "^(?P<stage_mm>\\d+(?:\\.\\d+)?)-(?P<clock_position>6|12)(?P<suffix>.*)$",
+    "technical_repeat_markers": {"repeat2": 2},
+    "recovery_pattern": "(?P<recovery_min>\\d+(?:\\.\\d+)?)min"
+  },
+  "probe_aliases": {
+    "MEM_FULL": {"probe_id": "DEMO_MEM_FULL", "probe_family": "MEM", "magnetization_mode": "active", "pole_geometry": "bilateral_intact"}
+  },
+  "run_rules": [
+    {"probe_id": "DEMO_MEM_FULL", "folder_contains": "run_01", "run_id": "demo_mem_r1", "run_order": 1, "recommended": true, "default_loading_branch": "loading"}
+  ],
+  "stage_sequences": {"demo_mem_r1": [0, 20, 40, 60, 80]},
+  "stage_overrides": [],
+  "strain_run_rules": [],
+  "signal_schema": {
+    "axis_order": ["Z", "Y", "X"],
+    "columns_per_sensor": 3,
+    "accepted_column_counts": [45],
+    "preferred_sensor_ids_for_45_columns": [1, 3, 4, 5, 6],
+    "known_excluded_sensor_ids": [2, 7],
+    "clip_absolute_value": 36000.0,
+    "sentinel_values": [-1.0],
+    "minimum_rows": 100,
+    "maximum_clip_fraction": 0.05,
+    "minimum_effective_sensors_multi": 4,
+    "sample_rate_hz": 200.0,
+    "pull_speed_mps": 0.20,
+    "nominal_liftoff_mm": 3.0
+  },
+  "labels_csv": "../labels/demo_stress_labels.csv",
+  "feature_set": {
+    "feature_set_id": "demo_p110_relative_v1",
+    "histogram_bins": 32,
+    "quantiles": [0.05, 0.25, 0.60, 0.70, 0.75, 0.80, 0.95],
+    "store_full_signal": true
+  }
+}
+

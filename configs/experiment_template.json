@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "experiment": {
+    "experiment_id": "REPLACE_ME",
+    "campaign_id": "REPLACE_ME",
+    "pipe_id": "REPLACE_ME",
+    "material": null,
+    "pipe_length_m": null,
+    "outer_diameter_mm": null,
+    "wall_thickness_mm": null,
+    "yield_strength_mpa": null,
+    "tensile_strength_mpa": null,
+    "inner_head_half_span_m": null,
+    "support_half_span_m": null,
+    "weld_positions_from_center_m": [],
+    "source_root": "C:\\path\\to\\immutable\\experiment"
+  },
+  "discovery": {
+    "exclude_directory_names": ["results", "output", "figures", "lake", ".git"],
+    "strain_directory_markers": ["strain", "应变片数据"],
+    "sensor_extensions": [".csv"],
+    "strain_extensions": [".xlsx", ".txt"],
+    "protocol_extensions": [".docx", ".pdf"]
+  },
+  "filename_parser": {
+    "pattern": "^(?P<stage_mm>\\d+(?:\\.\\d+)?)-(?P<clock_position>6|12)(?P<suffix>.*)$",
+    "technical_repeat_markers": {"第二次": 2},
+    "recovery_pattern": "(?P<recovery_min>\\d+(?:\\.\\d+)?)min"
+  },
+  "probe_aliases": {
+    "探头目录名": {"probe_id": "PROBE_01", "probe_family": "MEM", "magnetization_mode": "active", "pole_geometry": "bilateral_intact"}
+  },
+  "run_rules": [
+    {"probe_id": "PROBE_01", "folder_contains": "第一次", "run_id": "probe01_r1", "run_order": 1, "recommended": true, "default_loading_branch": "loading"}
+  ],
+  "stage_sequences": {"probe01_r1": [0, 20, 40, 60]},
+  "stage_overrides": [],
+  "strain_run_rules": [],
+  "signal_schema": {
+    "axis_order": ["Z", "Y", "X"],
+    "columns_per_sensor": 3,
+    "accepted_column_counts": [3],
+    "preferred_sensor_ids_for_45_columns": [],
+    "known_excluded_sensor_ids": [],
+    "clip_absolute_value": null,
+    "sentinel_values": [-1.0],
+    "minimum_rows": 100,
+    "maximum_clip_fraction": 0.05,
+    "minimum_effective_sensors_multi": 1,
+    "sample_rate_hz": null,
+    "pull_speed_mps": null,
+    "nominal_liftoff_mm": null
+  },
+  "labels_csv": "../labels/labels_template.csv",
+  "feature_set": {
+    "feature_set_id": "basic_relative_v1",
+    "histogram_bins": 32,
+    "quantiles": [0.05, 0.25, 0.60, 0.70, 0.75, 0.80, 0.95],
+    "store_full_signal": true
+  }
+}

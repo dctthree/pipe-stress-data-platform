@@ -1,0 +1,27 @@
+[project]
+name = "pipe-stress-data-platform"
+version = "0.2.0"
+description = "Traceable multimodal pull-test data pipeline for pipeline stress experiments"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.1",
+  "pyarrow>=14",
+]
+
+[project.optional-dependencies]
+demo = ["matplotlib>=3.8"]
+
+
+[project.scripts]
+stress-data = "stressdata.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

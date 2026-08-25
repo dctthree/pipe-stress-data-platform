@@ -1,0 +1,4 @@
+run_id,stage_mm,clock_position,recovery_min,stress_mpa_magnitude,local_axial_stress_mpa,label_status,label_source,label_version,use_for_supervised,notes
+probe01_r1,0,6,,0,0,verified,strain_pair,labels_v1,true,
+probe01_r1,20,6,,,,blind,withheld,labels_v1,false,盲测时应力保持为空
+
