@@ -1,10 +1,20 @@
 # Pipe Stress Data Magnetic Sensing Platform
 
-[中文说明](README_CN.md) · [406 multimodal case](case_studies/406_multimodal/README.md) · [Demo](demo/README.md) · [AI data contract](docs/AI_DATA_CONTRACT.md) · [Acquisition SOP](docs/工业采集元数据SOP.md)
+[中文说明](README_CN.md) · [P110 magnetic + strain case](case_studies/p110_magnetic_strain/README.md) · [406 multimodal case](case_studies/406_multimodal/README.md) · [Demo](demo/README.md) · [AI data contract](docs/AI_DATA_CONTRACT.md) · [Acquisition SOP](docs/工业采集元数据SOP.md)
 
 A traceable data pipeline for magnetic, remanence, eddy-current and strain-gauge pull-test data used in pipeline-stress research. It turns scattered CSV/XLSX/native acquisition files into immutable assets, typed tables, quality-control records, versioned features and leakage-safe AI inputs.
 
 > Research/engineering foundation. Quantitative MPa output remains fail-closed until a frozen model passes independent-pipe blind validation.
+
+## Two real-data case studies
+
+| P110 magnetic + strain | 406 MEM/remanence/ETP |
+|---|---|
+| [![Real P110 reviewed magnetic evidence](case_studies/p110_magnetic_strain/results/reviewed/real_p110_magnetic_case.png)](case_studies/p110_magnetic_strain/README.md) | [![Real 406 calibration evidence](docs/results/real_406_calibration_features.png)](case_studies/406_multimodal/README.md) |
+| **Actual data:** three-axis magnetic probes and strain gauges. No independent remanence measurement and no ETP. Reviewed two-run evidence supports relative ordering only; direct MPa remains disabled. | **Actual data:** shared MEM/remanence magnetic arrays, independent ETP in blind repeats, and strain gauges in calibration. Fusion remains QC-gated; no blind MPa is claimed. |
+| [Open P110 case](case_studies/p110_magnetic_strain/README.md) · [Real data v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) · [Field photos](docs/results/field_photos/README.md) | [Open 406 case](case_studies/406_multimodal/README.md) · [Real data v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) · [Field photos](docs/results/field_photos/406/README.md) |
+
+Both cards above use real experimental results, not the synthetic reader demo. The two experiments share the traceable platform but retain separate measurement contracts, configurations, evidence and claim limits.
 
 ## Experimental scope
 
@@ -51,7 +61,7 @@ P110 EXP2 contains magnetic-probe and strain-gauge measurements only. Probe name
 
 ![Real P110 magnetic and strain case study](docs/results/real_p110_magnetic_case.png)
 
-Five valid magnetic sensors from the complete-bilateral-MEM campaign reproduce stress ordering in two runs, while their direct linear slopes differ substantially. This supports a relative-ordering candidate, not universal direct-MPa calibration. P110 field photographs and provenance are available in [the P110 photo notes](docs/results/field_photos/README.md).
+Five preselected magnetic sensors in the reviewed X-axis workflow reproduce stress ordering in two complete-bilateral-MEM runs, while their direct linear slopes differ substantially. Conservative whole-trace QC and the later X-axis-specific review do not assign identical status, so this remains an exploratory relative-ordering candidate—not a set of universally certified channels or a direct-MPa calibration. See the [complete P110 case](case_studies/p110_magnetic_strain/README.md) and [field-photo notes](docs/results/field_photos/README.md).
 
 ## Why this repository exists
 

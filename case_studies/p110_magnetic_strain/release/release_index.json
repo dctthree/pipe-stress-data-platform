@@ -1,0 +1,31 @@
+{
+  "schema_version": "pipe-stress-release-index/1.0",
+  "release": "P110-v0.2.0",
+  "release_tag": "v0.2.0",
+  "release_url": "https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0",
+  "dataset": "P110 EXP2 real three-axis magnetic sensor and strain-gauge pull-test data",
+  "dataset_id": "P110_EXP2_20260819_21",
+  "dataset_version": "1.0.0+97b0dca62768",
+  "dataset_fingerprint_sha256": "97b0dca627686ad7002a6cbb83348017963a6d7dbca24d0030978cc50c2010c5",
+  "modality_boundary": {
+    "three_axis_magnetic_sensor_output": true,
+    "strain_gauge": true,
+    "independent_remanence_measurement": false,
+    "etp_eddy_current": false
+  },
+  "truth_policy": {
+    "strain_labels_separate_from_signal": true,
+    "direct_mpa_prediction_enabled": false,
+    "independent_pipe_blind_validation": false
+  },
+  "assets": [
+    {
+      "asset_name": "P110_EXP2_full_release_1.0.0+97b0dca62768.zip",
+      "format": "zip",
+      "bytes": 169639531,
+      "sha256": "38cc098c9a590f05efea429073e7c17c0b2c5f8b0232a7625e50957e05fa6a7c",
+      "download_url": "https://github.com/dctthree/pipe-stress-data-platform/releases/download/v0.2.0/P110_EXP2_full_release_1.0.0%2B97b0dca62768.zip",
+      "entry_point": "dataset_index.json"
+    }
+  ]
+}

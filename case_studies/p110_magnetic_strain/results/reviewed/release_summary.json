@@ -1,0 +1,60 @@
+{
+  "schema_version": "p110-public-summary/1.0",
+  "dataset_id": "P110_EXP2_20260819_21",
+  "dataset_version": "1.0.0+97b0dca62768",
+  "dataset_fingerprint_sha256": "97b0dca627686ad7002a6cbb83348017963a6d7dbca24d0030978cc50c2010c5",
+  "pipeline_version": "0.2.0",
+  "measurements": [
+    "three_axis_magnetic_sensor_output",
+    "strain_gauge"
+  ],
+  "independent_remanence_measurement_present": false,
+  "etp_present": false,
+  "probe_name_boundary": "Names containing remanence describe magnetization or hardware conditions; the files remain magnetic sensor outputs.",
+  "counts": {
+    "source_files": 211,
+    "sensor_scans_discovered": 53,
+    "sensor_scans_completed": 53,
+    "sensor_scans_failed": 0,
+    "strain_files_standardized": 18,
+    "strain_values_standardized": 9380688,
+    "channel_feature_rows": 639,
+    "primary_stress_feature_qc_failed": 33,
+    "ingest_errors": 0
+  },
+  "integrity_validation": {
+    "overall_status": "PASS",
+    "check_count": 40,
+    "failed_check_count": 0,
+    "warning_check_count": 0,
+    "full_blob_hash_validation": true,
+    "scope": "file integrity and structural consistency; not stress-model performance"
+  },
+  "label_policy": {
+    "direct_mpa_prediction_enabled": false,
+    "labels_separate_from_signal": true,
+    "split_unit": "pipe_id + experiment_id + run_id"
+  },
+  "coordinate_policy": {
+    "raw_coordinate": "sample_index",
+    "normalized_coordinate": "pipe_position_norm_between_detected_entry_exit",
+    "physical_distance_available": false,
+    "warning": "Without an encoder or verified speed, normalized position is not a metre-scale coordinate."
+  },
+  "reviewed_compact_evidence": {
+    "rows": 10,
+    "clock_position": 6,
+    "mechanical_side": "tensile",
+    "probe_geometry": "complete_bilateral_poles",
+    "runs": ["mem_r1", "mem_r2"],
+    "source_run_folders": ["第二次", "第三次"],
+    "stage_mm_each_run": [0, 20, 40, 50, 60],
+    "preselected_sensor_ids": [1, 3, 4, 5, 6],
+    "baseline": "same_run_zero_load_pull",
+    "axis": "X",
+    "allowed_claim": "same_pipe_same_configuration_relative_order_candidate_only",
+    "direct_mpa_claim": false,
+    "raw_to_compact_row_provenance_complete": false,
+    "provenance_limitation": "The compact table does not yet carry scan_id, source SHA-256, baseline scan ID or method version per row."
+  }
+}

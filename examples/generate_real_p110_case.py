@@ -20,7 +20,7 @@ def main() -> None:
     args = parser.parse_args()
     data = pd.read_csv(args.table)
     if set(data["run_id"]) != {"mem_r1", "mem_r2"} or data["sensor_n"].min() != 5:
-        raise RuntimeError("Expected two reviewed complete-MEM runs with five valid sensors.")
+        raise RuntimeError("Expected two reviewed complete-MEM runs with five preselected sensors.")
 
     fig, axes = plt.subplots(2, 2, figsize=(14, 9), constrained_layout=True)
     colors = {"mem_r1": "#1764ab", "mem_r2": "#d95f02"}
@@ -67,8 +67,8 @@ def main() -> None:
     axes[0, 0].legend()
     axes[0, 1].legend()
     fig.suptitle(
-        "REAL P110 EXP2 — complete bilateral MEM, five valid magnetic sensors (1/3/4/5/6)\n"
-        "Q60–Q80 stress ordering repeats across two runs; absolute scale does not yet transfer",
+        "REAL P110 EXP2 — reviewed 6 o'clock complete-bilateral-MEM subset\n"
+        "ordering repeats; absolute scale does not transfer",
         fontsize=14,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)

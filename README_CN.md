@@ -1,10 +1,20 @@
 # 管道应力多传感工业数据平台
 
-[English](README.md) · [406 三模态案例](case_studies/406_multimodal/README.md) · [演示数据](demo/README.md) · [AI 数据契约](docs/AI_DATA_CONTRACT.md) · [采集 SOP](docs/工业采集元数据SOP.md)
+[English](README.md) · [P110 磁传感+应变案例](case_studies/p110_magnetic_strain/README.md) · [406 三模态案例](case_studies/406_multimodal/README.md) · [演示数据](demo/README.md) · [AI 数据契约](docs/AI_DATA_CONTRACT.md) · [采集 SOP](docs/工业采集元数据SOP.md)
 
 本项目把磁传感、剩磁、涡流 ETP 和应变片牵拉实验整理成可追溯、可增量、可供 MATLAB、Python 和 AI 共用的数据链：原始文件不可变存档，标准信号、质控、特征和标签分别版本化。
 
 > 当前定位是科研与工程基础设施。只有冻结模型通过独立新管道盲测后，系统才允许开放定量 MPa 输出。
+
+## 两个同级真实数据项目
+
+| P110 磁传感 + 应变 | 406 MEM/剩磁/ETP |
+|---|---|
+| [![P110真实磁信号审查结果](case_studies/p110_magnetic_strain/results/reviewed/real_p110_magnetic_case.png)](case_studies/p110_magnetic_strain/README.md) | [![406真实标定结果](docs/results/real_406_calibration_features.png)](case_studies/406_multimodal/README.md) |
+| **实际数据：**三轴磁传感与应变片；没有独立剩磁采集，也没有 ETP。两轮审查证据目前只支持相对排序，禁止直接输出 MPa。 | **实际数据：**同一磁阵列中的 MEM/剩磁、盲测轮独立 ETP，以及标定轮应变片。当前融合为质控门控，不声称盲测 MPa。 |
+| [进入 P110 项目](case_studies/p110_magnetic_strain/README.md) · [真实数据 v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) · [现场照片](docs/results/field_photos/README.md) | [进入 406 项目](case_studies/406_multimodal/README.md) · [真实数据 v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) · [现场照片](docs/results/field_photos/406/README.md) |
+
+上面两张卡片都使用真实实验结果，不是合成 Demo。两套实验共用可追溯平台，但各自保留独立的数据边界、配置、结果证据和结论限制。
 
 ## 实验范围必须严格区分
 
@@ -51,7 +61,7 @@ P110 EXP2 只有磁探头和应变片数据。探头/文件夹名称中出现“
 
 ![P110真实磁信号与应变案例](docs/results/real_p110_magnetic_case.png)
 
-完整双磁极 MEM 方案的五个有效传感器在两轮中能重复应力排序，但直接拟合斜率仍明显变化，因此适合作为相对排序候选，不能直接迁移为通用 MPa 标定。P110 现场图见[照片说明](docs/results/field_photos/README.md)。
+在 X 轴专用审查流程中，完整双磁极 MEM 方案的五个预选传感器在两轮中能重复应力排序，但直接拟合斜率仍明显变化。保守的整迹质控与后续 X 轴专用审查给出的状态并不完全相同，因此它仍是探索性相对排序候选，不能称为通用合格通道或直接迁移为 MPa 标定。详见[P110 完整案例](case_studies/p110_magnetic_strain/README.md)和[现场照片说明](docs/results/field_photos/README.md)。
 
 ## 平台解决的问题
 
