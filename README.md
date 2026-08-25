@@ -8,6 +8,14 @@ The pipeline turns scattered CSV/XLSX/native acquisition files into immutable ra
 
 > Status: research/engineering foundation. Quantitative MPa output remains fail-closed until a model passes independent-pipe blind validation.
 
+## Real P110 evidence first
+
+The figure below is generated from the **real P110 EXP2 magnetic measurements and strain-gauge-derived stress**, not from synthetic demo data. Only the first and last 1% of the detected in-pipe interval are trimmed for visualization; the frozen feature tables are unchanged.
+
+![Real P110 magnetic and strain case study](docs/results/real_p110_magnetic_case.png)
+
+The curves show genuine load-related distribution changes, together with genuine non-monotonicity. They support stress-sensitive magnetic response, but not a universal direct-MPa calibration.
+
 ## Why this repository exists
 
 Real pull-test campaigns often mix sensor files, strain exports, loading notes, repeated stages and manually named folders. That makes it easy to overwrite raw data, align the wrong load stage, reuse blind labels during feature selection, or compare sample-domain frequencies across different pull speeds.
@@ -57,7 +65,7 @@ Expected outputs:
 - a full SHA-256 validation report;
 - signal and stress-feature figures.
 
-![Demo signals](demo/results/demo_stage_signals.png)
+![Synthetic reader demo — not experimental evidence](demo/results/demo_stage_signals.png)
 
 ![Demo stress feature](demo/results/demo_stress_feature.png)
 
@@ -66,8 +74,6 @@ Expected outputs:
 Modality scope: three-axis magnetic probe signals plus strain-gauge records. No ETP channels are present. Names that describe a magnetizing section or probe condition are experimental hardware labels, not an additional independently acquired remanence modality.
 
 The following figure is generated from the **real P110 EXP2 measurements**, not from the synthetic reader demo. It shows a QC-passing single-side-slotted MEM run at 6 and 12 o'clock. The real data support visible zero/load distribution changes, but they do not justify claiming a strictly monotonic magnetic-to-stress calibration across every stage.
-
-![Real P110 magnetic and strain case study](docs/results/real_p110_magnetic_case.png)
 
 Recreate it after downloading/extracting the private full-data release:
 
