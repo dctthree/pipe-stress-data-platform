@@ -10,86 +10,65 @@ import pandas as pd
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 
+FEATURES = ["q60_delta", "q70_delta", "q75_delta", "q80_delta"]
+
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate the reviewed real-P110 case-study figure.")
-    parser.add_argument("--lake", type=Path, default=Path("lake"))
-    parser.add_argument(
-        "--output",
-        type=Path,
-        default=Path("docs/results/real_p110_magnetic_case.png"),
-    )
+    parser = argparse.ArgumentParser(description="Plot reviewed real P110 multi-sensor MEM evidence.")
+    parser.add_argument("--table", type=Path, default=Path("docs/data/p110_multisensor_mem_real.csv"))
+    parser.add_argument("--output", type=Path, default=Path("docs/results/real_p110_magnetic_case.png"))
     args = parser.parse_args()
+    data = pd.read_csv(args.table)
+    if set(data["run_id"]) != {"mem_r1", "mem_r2"} or data["sensor_n"].min() != 5:
+        raise RuntimeError("Expected two reviewed complete-MEM runs with five valid sensors.")
 
-    scans = pd.read_parquet(args.lake / "catalog/scans.parquet")
-    features = pd.read_parquet(args.lake / "gold/channel_features.parquet")
-    selected = scans[
-        scans["probe_id"].eq("MEM_SINGLE_SLOT")
-        & scans["run_id"].eq("slotted_mem_r1")
-        & scans["label_status"].eq("verified")
-        & scans["primary_stress_feature_qc_status"].eq("PASS")
-    ].copy()
-    if selected.empty:
-        raise RuntimeError("Reviewed real P110 subset was not found or did not pass QC.")
-
-    colors = plt.cm.viridis(np.linspace(0.05, 0.95, selected["stage_mm"].nunique()))
-    color_by_stage = dict(zip(sorted(selected["stage_mm"].unique()), colors))
     fig, axes = plt.subplots(2, 2, figsize=(14, 9), constrained_layout=True)
+    colors = {"mem_r1": "#1764ab", "mem_r2": "#d95f02"}
+    labels = {"mem_r1": "complete MEM run 1", "mem_r2": "complete MEM run 2"}
+    for run_id, group in data.groupby("run_id"):
+        group = group.sort_values("stress_mpa")
+        axes[0, 0].plot(group["stress_mpa"], group["q70_delta"], "o-", linewidth=2.2,
+                        color=colors[run_id], label=labels[run_id])
+        x = group["stress_mpa"] / group["stress_mpa"].max()
+        y = group["q70_delta"] / group["q70_delta"].max()
+        axes[0, 1].plot(x, y, "o-", linewidth=2.2, color=colors[run_id], label=labels[run_id])
 
-    for ax, clock in zip(axes[0], (6, 12)):
-        subset = selected[selected["clock_position"].eq(clock)].sort_values("stage_mm")
-        for row in subset.itertuples(index=False):
-            signal = pd.read_parquet(args.lake / row.silver_signal_path)
-            x = signal[
-                signal["axis"].eq("X") & signal["in_pipe"] & signal["channel_qc_valid"]
-            ].sort_values("pipe_position_norm")
-            x = x[x["pipe_position_norm"].between(0.01, 0.99)]
-            if x.empty:
-                continue
-            values = x["value_raw"].to_numpy(dtype=float)
-            values = values - np.nanmedian(values)
-            ax.plot(
-                x["pipe_position_norm"],
-                values,
-                color=color_by_stage[row.stage_mm],
-                linewidth=1.1,
-                label=f"{row.stage_mm:g} mm / {row.stress_mpa_magnitude:.1f} MPa",
-            )
-        stress_type = "tension" if clock == 6 else "compression"
-        ax.set_title(f"{clock} o'clock ({stress_type}) — real magnetic X signal")
-        ax.set_xlabel("Normalized in-pipe position (not metres)")
-        ax.set_ylabel("X response − in-pipe median [count]")
-        ax.grid(alpha=0.25)
-        ax.legend(fontsize=8, ncol=2)
+    axes[0, 0].set_title("Real scale: X-axis Q70 shift from same-run zero load")
+    axes[0, 0].set_xlabel("Strain-gauge-derived bending stress [MPa]")
+    axes[0, 0].set_ylabel("Five-sensor median ΔQ70 [count]")
+    axes[0, 1].plot([0, 1], [0, 1], "k--", linewidth=1, label="identity")
+    axes[0, 1].set_title("Within-run normalized response")
+    axes[0, 1].set_xlabel("Normalized strain-gauge stress")
+    axes[0, 1].set_ylabel("Normalized magnetic ΔQ70")
 
-    fx = features[
-        features["scan_id"].isin(selected["scan_id"])
-        & features["axis"].eq("X")
-        & features["channel_qc_valid"]
-    ].copy()
-    for clock, marker, label in ((6, "o", "6 o'clock tension"), (12, "s", "12 o'clock compression")):
-        q = fx[fx["clock_position"].eq(clock)].sort_values("stress_mpa_magnitude")
-        axes[1, 0].plot(
-            q["stress_mpa_magnitude"], q["q_family_delta"], marker=marker, label=label
-        )
-        axes[1, 1].plot(
-            q["stress_mpa_magnitude"], q["histogram_entropy"], marker=marker, label=label
-        )
+    rho_by_feature, slope_ratio_by_feature = [], []
+    for feature in FEATURES:
+        rhos, slopes = [], []
+        for _, group in data.groupby("run_id"):
+            stress_rank = group["stress_mpa"].rank().to_numpy(dtype=float)
+            feature_rank = group[feature].rank().to_numpy(dtype=float)
+            rhos.append(float(np.corrcoef(stress_rank, feature_rank)[0, 1]))
+            slopes.append(np.polyfit(group["stress_mpa"], group[feature], 1)[0])
+        rho_by_feature.append(min(rhos))
+        slope_ratio_by_feature.append(max(slopes) / min(slopes))
 
-    axes[1, 0].axhline(0, color="black", linewidth=0.8)
-    axes[1, 0].set_title("Robust quantile shift relative to same-clock zero load")
-    axes[1, 0].set_xlabel("Strain-gauge-derived axial stress magnitude [MPa]")
-    axes[1, 0].set_ylabel("Median Q60/Q70/Q75/Q80 shift [count]")
-    axes[1, 1].set_title("Magnetic distribution entropy")
-    axes[1, 1].set_xlabel("Strain-gauge-derived axial stress magnitude [MPa]")
-    axes[1, 1].set_ylabel("Histogram entropy [dimensionless]")
-    for ax in axes[1]:
-        ax.grid(alpha=0.25)
-        ax.legend(fontsize=9)
-
+    names = ["Q60", "Q70", "Q75", "Q80"]
+    axes[1, 0].bar(names, rho_by_feature, color="#2a9d8f")
+    axes[1, 0].axhline(0.9, color="black", linestyle="--", linewidth=1)
+    axes[1, 0].set_ylim(0, 1.05)
+    axes[1, 0].set_title("Worst-run Spearman ordering reproducibility")
+    axes[1, 0].set_ylabel("min Spearman ρ across two complete runs")
+    axes[1, 1].bar(names, slope_ratio_by_feature, color="#e9c46a")
+    axes[1, 1].axhline(1.0, color="black", linestyle="--", linewidth=1)
+    axes[1, 1].set_title("Cross-run scale instability (must not be hidden)")
+    axes[1, 1].set_ylabel("larger/smaller calibration slope")
+    for ax in axes.flat:
+        ax.grid(alpha=0.25, axis="y")
+    axes[0, 0].legend()
+    axes[0, 1].legend()
     fig.suptitle(
-        "REAL P110 EXP2: three-axis magnetic probe + strain gauge\n"
-        "Single-side slotted MEM, run 1; 1% pipe-edge trim for display; strict monotonicity is not claimed",
+        "REAL P110 EXP2 — complete bilateral MEM, five valid magnetic sensors (1/3/4/5/6)\n"
+        "Q60–Q80 stress ordering repeats across two runs; absolute scale does not yet transfer",
         fontsize=14,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)

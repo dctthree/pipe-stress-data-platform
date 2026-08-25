@@ -10,11 +10,11 @@ The pipeline turns scattered CSV/XLSX/native acquisition files into immutable ra
 
 ## Real P110 evidence first
 
-The figure below is generated from the **real P110 EXP2 magnetic measurements and strain-gauge-derived stress**, not from synthetic demo data. Only the first and last 1% of the detected in-pipe interval are trimmed for visualization; the frozen feature tables are unchanged.
+The figure below is generated from the **new real P110 EXP2 complete-bilateral-MEM campaign**, not from synthetic demo data. It uses five valid magnetic sensors (IDs 1/3/4/5/6), two complete repeated runs, X-axis clipping-aware Q60–Q80 shifts relative to each run's zero-load scan, and strain-gauge-derived bending stress.
 
 ![Real P110 magnetic and strain case study](docs/results/real_p110_magnetic_case.png)
 
-The curves show genuine load-related distribution changes, together with genuine non-monotonicity. They support stress-sensitive magnetic response, but not a universal direct-MPa calibration.
+Both runs reproduce stress ordering (Spearman ρ ≈ 1 for Q60–Q80), while the direct linear slopes shown here differ by roughly 1.8–2.2×. This supports a robust **relative ordering** candidate, not a universal direct-MPa calibration.
 
 ## Why this repository exists
 
@@ -73,12 +73,12 @@ Expected outputs:
 
 Modality scope: three-axis magnetic probe signals plus strain-gauge records. No ETP channels are present. Names that describe a magnetizing section or probe condition are experimental hardware labels, not an additional independently acquired remanence modality.
 
-The following figure is generated from the **real P110 EXP2 measurements**, not from the synthetic reader demo. It shows a QC-passing single-side-slotted MEM run at 6 and 12 o'clock. The real data support visible zero/load distribution changes, but they do not justify claiming a strictly monotonic magnetic-to-stress calibration across every stage.
+The curated table behind the figure contains only derived values from the reviewed real experiment; the raw magnetic and strain files remain in the private Release. The single-side-slotted probe is not used for this headline evidence.
 
 Recreate it after downloading/extracting the private full-data release:
 
 ```powershell
-python examples/generate_real_p110_case.py --lake path/to/extracted_release
+python examples/generate_real_p110_case.py
 ```
 
 The local full-data run used 211 source files:
