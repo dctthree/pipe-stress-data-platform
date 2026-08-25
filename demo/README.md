@@ -1,6 +1,6 @@
 # Reader demo
 
-This demo reproduces the repository workflow on deterministic, de-identified P110-like data:
+This demo reproduces the repository workflow on deterministic, de-identified P110-like magnetic data with separate strain labels. It does not simulate ETP or an independent remanence dataset:
 
 - five displacement/stress stages;
 - one complete bilateral MEM probe;
@@ -31,4 +31,3 @@ primary feature QC failures  0
 validation                   PASS
 direct MPa output            disabled
 ```
-

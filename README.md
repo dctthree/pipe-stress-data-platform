@@ -2,7 +2,9 @@
 
 [中文说明](README_CN.md) · [Demo](demo/README.md) · [AI data contract](docs/AI_DATA_CONTRACT.md) · [Acquisition SOP](docs/工业采集元数据SOP.md)
 
-A traceable data pipeline for magnetic, remanence, eddy-current and strain-gauge pull-test data used in pipeline stress research. It turns scattered CSV/XLSX/native acquisition files into immutable raw assets, typed Parquet signals, quality-control records, versioned features and leakage-safe AI tables.
+A traceable data pipeline for pipeline-stress pull-test research. The current P110 EXP2 release contains **three-axis magnetic sensor data and strain-gauge data only**; it does not contain an independent remanence-signal dataset or eddy-current (ETP) data. The platform architecture can be extended with separate remanence/ETP adapters for other campaigns, but those modalities must not be attributed to this P110 experiment.
+
+The pipeline turns scattered CSV/XLSX/native acquisition files into immutable raw assets, typed Parquet signals, quality-control records, versioned features and leakage-safe AI tables.
 
 > Status: research/engineering foundation. Quantitative MPa output remains fail-closed until a model passes independent-pipe blind validation.
 
@@ -40,7 +42,7 @@ flowchart LR
 
 ## Quick demo
 
-The demo creates a deterministic, de-identified P110-like five-stage experiment with the same 45-column `15 sensors × ZYX` layout. It is structural demonstration data, not field-validation evidence.
+The demo creates a deterministic, de-identified **magnetic-only** P110-like five-stage experiment with the same 45-column `15 sensors × ZYX` layout and separate strain labels. It is structural demonstration data, not field-validation evidence.
 
 ```powershell
 python -m pip install -e ".[demo]"
@@ -60,6 +62,8 @@ Expected outputs:
 ![Demo stress feature](demo/results/demo_stress_feature.png)
 
 ## Real P110 case-study result
+
+Modality scope: three-axis magnetic probe signals plus strain-gauge records. No ETP channels are present. Names that describe a magnetizing section or probe condition are experimental hardware labels, not an additional independently acquired remanence modality.
 
 The local full-data run used 211 source files:
 
