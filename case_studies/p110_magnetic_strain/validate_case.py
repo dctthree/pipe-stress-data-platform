@@ -322,7 +322,9 @@ def main() -> int:
         "checks": checks,
         "errors": errors,
     }
-    print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
+    # Windows CI may expose a cp1252 stdout even though the files are UTF-8.
+    # ASCII-escaped JSON keeps the validator portable without weakening checks.
+    print(json.dumps(report, ensure_ascii=True, indent=2, sort_keys=True))
     return 0 if not errors else 1
 
 
