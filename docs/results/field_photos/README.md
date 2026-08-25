@@ -2,6 +2,14 @@
 
 These photographs document the physical P110 four-point-bending pull-test setup. They are visual context only; neither image is consumed by the signal pipeline or used as validation evidence.
 
+## Preview
+
+| Overall P110 loading system and pipe | Central loading head, pipe and strain-gauge wiring |
+|---|---|
+| ![Overall P110 four-point-bending loading system](p110_field_test_overview.jpg) | ![P110 central loading head and strain-gauge wiring](p110_sensor_pull_setup.jpg) |
+
+The second photograph documents the loading fixture and strain-gauge wiring; it does not visibly document the internal magnetic probe.
+
 ## Files
 
 | Published file | Description | Dimensions | SHA-256 |

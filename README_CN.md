@@ -10,8 +10,11 @@
 
 | P110 磁传感 + 应变 | 406 MEM/剩磁/ETP |
 |---|---|
-| [![P110真实磁信号审查结果](case_studies/p110_magnetic_strain/results/reviewed/real_p110_magnetic_case.png)](case_studies/p110_magnetic_strain/README.md) | [![406真实标定结果](docs/results/real_406_calibration_features.png)](case_studies/406_multimodal/README.md) |
-| **实际数据：**三轴磁传感与应变片；没有独立剩磁采集，也没有 ETP。两轮审查证据目前只支持相对排序，禁止直接输出 MPa。 | **实际数据：**同一磁阵列中的 MEM/剩磁、盲测轮独立 ETP，以及标定轮应变片。当前融合为质控门控，不声称盲测 MPa。 |
+| [![P110四点弯牵拉实验](docs/results/field_photos/p110_sensor_pull_setup.jpg)](case_studies/p110_magnetic_strain/README.md) | [![406四点弯牵拉实验](docs/results/field_photos/406/406_four_point_bending_strain_setup.jpg)](case_studies/406_multimodal/README.md) |
+| **实验：**10.54 m P110 套管开展重复四点弯牵拉。公开索引包含 48 次 6 点钟牵拉与 5 次 12 点钟牵拉；当前审查的完整双磁极 MEM 子集全部来自 6 点钟。 | **实验：**406 mm 管道先做四点弯标定，再由内检测器完成两个完整盲测周期 C1/C2 和一个部分周期 C3。 |
+| **传感器：**`Z/Y/X` 顺序的三轴磁传感与应变片；当前结果采用完整双磁极 MEM 探头及预选传感器 1/3/4/5/6。没有独立剩磁流，也没有 ETP。 | **传感器：**同一磁 CSV 中拆分的 160 个剩磁与 160 个 MEM 通道、盲测轮独立 20 通道复数 ETP，以及标定轮应变片。 |
+| [![P110真实磁信号审查结果](case_studies/p110_magnetic_strain/results/reviewed/real_p110_magnetic_case.png)](case_studies/p110_magnetic_strain/README.md) | [![406真实标定结果](case_studies/406_multimodal/results/calibration/07_physical_contrast_trends.png)](case_studies/406_multimodal/README.md) |
+| **当前证据：**P110 两轮 Q60–Q80 可以重复应力排序，但响应尺度不同，禁止直接输出 MPa。 | **当前证据：**部分磁相对变化候选在声明的 QC 排除后通过同管门限；ETP 仍是研究/QC，不声称盲测 MPa。 |
 | [进入 P110 项目](case_studies/p110_magnetic_strain/README.md) · [真实数据 v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) · [现场照片](docs/results/field_photos/README.md) | [进入 406 项目](case_studies/406_multimodal/README.md) · [真实数据 v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) · [现场照片](docs/results/field_photos/406/README.md) |
 
 上面两张卡片都使用真实实验结果，不是合成 Demo。两套实验共用可追溯平台，但各自保留独立的数据边界、配置、结果证据和结论限制。
@@ -20,13 +23,39 @@
 
 | 实验 | 实际包含的数据 | 设计与真值边界 |
 |---|---|---|
-| P110 EXP2 | 三轴磁传感 + 应变片 | 公开包含两次完整重复；没有独立剩磁数据，也没有 ETP。 |
+| P110 EXP2 | 三轴磁传感 + 应变片 | 全量包包含五类探头硬件工况和 53 次磁扫描；当前审查的完整双磁极 MEM 子集包含两轮完整重复。没有独立剩磁数据，也没有 ETP。 |
 | 406 标定批次 | 同一磁 CSV 内按物理列奇偶拆分的 MEM/剩磁 + 应变片 | 零载 S0 + 6 个加载状态 S1–S6。MPa 是 `206 GPa × 中位弯曲应变`，不是载荷传感器实测值；该批次没有逐阶段 ETP。 |
 | 406 盲测重复 | 同一 MEM/剩磁磁流 + 独立 20 通道复数 ETP | C1、C2 为 S0–S6 完整周期；C3 只有 S0–S2，共 17 个配对包。没有本轮同步应变或 MPa 真值。 |
 
 406 磁 CSV 有 32 个物理列，每列 10 个探头。1-based 奇数物理列为 160 个剩磁通道，偶数物理列为 160 个 MEM 通道。两类磁信号共用同一套 1307 字段 CSV，并非两套独立文件；ETP 才是独立采集的数据流。
 
-## 真实 406 实验证据
+## P110 实验项目——磁传感 + 应变
+
+### 实验与传感器布置
+
+| P110 四点弯加载台架 | 压头、管体与应变片接线 |
+|---|---|
+| ![P110四点弯加载台架](docs/results/field_photos/p110_field_test_overview.jpg) | ![P110压头与应变片接线](docs/results/field_photos/p110_sensor_pull_setup.jpg) |
+
+| 组成 | 说明 |
+|---|---|
+| 管体与加载 | P110 套管长 10.54 m、外径 139.70 mm、壁厚 9.17 mm，开展重复四点弯加载 |
+| 牵拉位置 | 公开扫描索引包含 48 次 6 点钟牵拉和 5 次单边开槽 MEM 的 12 点钟牵拉；当前审查的完整双磁极 MEM 数据全部来自 6 点钟拉应力侧 |
+| 磁传感器 | CSV 三轴顺序为 `Z/Y/X`；当前审查证据采用完整双磁极 MEM 方案及预选传感器 1/3/4/5/6 |
+| 参考测量 | 同步匹配应变片；图中 MPa 为应变片推导量，不是载荷传感器真值 |
+| 模态边界 | 只有磁传感输出与应变片；没有 ETP，也没有独立采集的剩磁数据流 |
+
+照片用于直观说明真实实验，不参与数值计算。照片来源与元数据清理记录见[P110 现场照片说明](docs/results/field_photos/README.md)。
+
+### 真实分析结果
+
+下图使用真实的 6 点钟拉应力侧审查子集。探头或文件夹名称中的“磁化节/剩磁”只代表硬件工况，不等于独立剩磁测量模态。
+
+![P110真实磁信号与应变案例](case_studies/p110_magnetic_strain/results/reviewed/real_p110_magnetic_case.png)
+
+在 X 轴专用审查流程中，完整双磁极 MEM 方案的五个预选传感器在两轮中能重复应力排序，但直接拟合斜率仍明显变化。保守的整迹质控与后续 X 轴专用审查给出的状态并不完全相同，因此它仍是探索性相对排序候选，不能称为通用合格通道或直接迁移为 MPa 标定。详见[P110 完整案例](case_studies/p110_magnetic_strain/README.md)和[P110 v0.2.0 数据](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0)。
+
+## 406 实验项目——MEM/剩磁/ETP
 
 ### 现场布置
 
@@ -36,11 +65,19 @@
 
 照片只用于说明实验场景，不参与数值分析。公开副本已完成 sRGB 转换、尺寸压缩和元数据清除；来源及第一张背景人员的隐私说明见[现场照片记录](docs/results/field_photos/406/README.md)。
 
+| 组成 | 说明 |
+|---|---|
+| 管体与加载 | 406 mm 管道开展四点弯标定，随后由内检测器完成完整盲测周期 C1/C2 和部分周期 C3 |
+| 磁阵列 | 32 个物理列 × 每列 10 个测点；同一 CSV 的一基奇数列组成 160 个剩磁通道，偶数列组成 160 个 MEM 通道 |
+| ETP | 盲测重复中独立采集的 20 通道复数涡流数据流 |
+| 参考测量 | 标定实验含应变片；盲测周期没有同期应变或 MPa 真值 |
+| 融合边界 | 失败闭锁的模态/QC 门控；不生成数值融合值，也不输出盲测 MPa |
+
 ### 应变对应与跨周期复核
 
 下图来自真实 406 标定轮和应变片推导的名义弯曲应力。它能说明开发轮内的力学对应关系，但只有一个标定序列，不能当作独立验证结果。
 
-![406真实标定特征](docs/results/real_406_calibration_features.png)
+![406真实标定特征](case_studies/406_multimodal/results/calibration/07_physical_contrast_trends.png)
 
 下图展示盲测重复中实际存在的全部数据包，保留了 C2/S2 的操作员备注与 `REJECT`，也保留了 C3 只有三个状态且幅值尺度不同的事实。
 
@@ -54,14 +91,6 @@
 - 当前三模态程序实现的是 fail-closed 的模态资格/QC 门控。由于 ETP 未通过整轮门限，结果保持“仅磁相对量”，不生成数值融合值或盲测 MPa。逐阶段跨模态方向冲突评分仍是后续必须增加的门，不是本版本已经实现的结果。
 
 公式、全部派生表、13 张可从盲测原始数据重跑的图，以及 1 张附派生值与重绘程序的冻结标定图，见[406 三模态完整案例](case_studies/406_multimodal/README.md)。
-
-## 真实 P110 证据
-
-P110 EXP2 只有磁探头和应变片数据。探头/文件夹名称中出现“磁化节”或“剩磁”只代表硬件工况，不等于另有一套独立剩磁测量。
-
-![P110真实磁信号与应变案例](docs/results/real_p110_magnetic_case.png)
-
-在 X 轴专用审查流程中，完整双磁极 MEM 方案的五个预选传感器在两轮中能重复应力排序，但直接拟合斜率仍明显变化。保守的整迹质控与后续 X 轴专用审查给出的状态并不完全相同，因此它仍是探索性相对排序候选，不能称为通用合格通道或直接迁移为 MPa 标定。详见[P110 完整案例](case_studies/p110_magnetic_strain/README.md)和[现场照片说明](docs/results/field_photos/README.md)。
 
 ## 平台解决的问题
 

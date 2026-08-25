@@ -4,6 +4,21 @@
 
 This directory publishes the traceable MATLAB workflow, frozen derived tables, and real analysis figures for the 406-pipe pull tests. The large raw CSV files are distributed as GitHub Release data assets; the normal Git tree keeps code, configuration, QC evidence, and reviewable results.
 
+## 现场实验与传感器 / Field experiment and sensors
+
+| 406 管道内检测器与试验管段 / In-line inspection tool | 四点弯加载与应变片布置 / Four-point bending and strain gauges |
+|---|---|
+| ![406 mm in-line inspection tool and test pipe](../../docs/results/field_photos/406/406_inline_inspection_tool_setup.jpg) | ![406 mm four-point-bending and strain-gauge setup](../../docs/results/field_photos/406/406_four_point_bending_strain_setup.jpg) |
+
+| 组成 / Component | 说明 / Description |
+|---|---|
+| 实验 / Experiment | 406 mm 管道四点弯标定，以及内检测器完整盲测周期 C1/C2 和部分周期 C3 / Four-point-bending calibration plus complete blind cycles C1/C2 and partial cycle C3 |
+| 磁阵列 / Magnetic array | 同一 1307 字段 CSV 中按物理列拆分 160 个剩磁与 160 个 MEM 通道 / 160 remanence and 160 MEM channels separated by physical-column parity from one shared CSV |
+| 涡流 / ETP | 盲测轮独立采集的 20 通道复数涡流数据 / Independent 20-channel complex eddy-current stream in blind repeats |
+| 应变 / Strain | 标定实验含应变片；盲测周期没有同期应变或 MPa 真值 / Strain gauges are available in calibration, not as contemporaneous blind truth |
+
+照片只提供真实设备与实验布置背景，不参与特征计算；来源、公开处理和隐私说明见[照片记录](../../docs/results/field_photos/406/README.md)。The photographs are physical context only and are not numerical analysis inputs.
+
 ## 1. 实验设计与数据边界 / Experimental design and data boundary
 
 - 先验标定批次包含 `S0` 零载和六个加载阶段。该批次的应变信息用于形成候选特征与冻结分析边界。

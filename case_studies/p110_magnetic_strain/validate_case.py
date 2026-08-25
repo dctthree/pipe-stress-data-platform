@@ -237,6 +237,7 @@ def main() -> int:
             "sensor_scans_discovered": 53,
             "sensor_scans_completed": 53,
             "sensor_scans_failed": 0,
+            "clock_position_scan_counts": {"6": 48, "12": 5},
             "strain_files_standardized": 18,
             "strain_values_standardized": 9380688,
             "channel_feature_rows": 639,
@@ -287,6 +288,13 @@ def main() -> int:
                 f"{name} lacks the first-class 406 case link")
         require("releases/tag/v0.2.0" in text and "releases/tag/v0.3.0" in text,
                 f"{name} does not link both public data releases")
+        for image in (
+            "docs/results/field_photos/p110_sensor_pull_setup.jpg",
+            "docs/results/field_photos/p110_field_test_overview.jpg",
+            "docs/results/field_photos/406/406_four_point_bending_strain_setup.jpg",
+            "docs/results/field_photos/406/406_inline_inspection_tool_setup.jpg",
+        ):
+            require(image in text, f"{name} does not directly embed {image}")
 
     case_readme = (ROOT / "README.md").read_text(encoding="utf-8-sig")
     for required in (
@@ -296,6 +304,37 @@ def main() -> int:
     ):
         require(required.lower() in case_readme.lower(),
                 f"P110 README lacks required scientific boundary: {required}")
+    for image in (
+        "../../docs/results/field_photos/p110_field_test_overview.jpg",
+        "../../docs/results/field_photos/p110_sensor_pull_setup.jpg",
+    ):
+        require(image in case_readme, f"P110 case README does not directly embed {image}")
+
+    case_406_readme = (REPO / "case_studies" / "406_multimodal" / "README.md").read_text(
+        encoding="utf-8-sig"
+    )
+    for image in (
+        "../../docs/results/field_photos/406/406_inline_inspection_tool_setup.jpg",
+        "../../docs/results/field_photos/406/406_four_point_bending_strain_setup.jpg",
+    ):
+        require(image in case_406_readme, f"406 case README does not directly embed {image}")
+
+    presentation_photos = [
+        REPO / "docs" / "results" / "field_photos" / "p110_field_test_overview.jpg",
+        REPO / "docs" / "results" / "field_photos" / "p110_sensor_pull_setup.jpg",
+        REPO / "docs" / "results" / "field_photos" / "406" /
+        "406_inline_inspection_tool_setup.jpg",
+        REPO / "docs" / "results" / "field_photos" / "406" /
+        "406_four_point_bending_strain_setup.jpg",
+    ]
+    existing_presentation_photos = [path for path in presentation_photos if path.is_file()]
+    require(len(existing_presentation_photos) == len(presentation_photos),
+            "At least one directly embedded field photograph is missing")
+    require(all(path.stat().st_size > 100_000 for path in existing_presentation_photos),
+            "At least one directly embedded field photograph is unexpectedly small")
+    require(all(path.read_bytes()[:2] == b"\xff\xd8" for path in existing_presentation_photos),
+            "At least one directly embedded field photograph is not a JPEG")
+    checks["directly_embedded_field_photos"] = len(presentation_photos)
 
     drive_path = re.compile(r"(?<![A-Za-z0-9])[A-Za-z]:[\\/]")
     unix_home = re.compile(r"/(?:Users|home)/[^/\s]+/")

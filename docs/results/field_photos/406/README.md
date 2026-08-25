@@ -5,6 +5,12 @@ inspection setup used by the project team. They provide visual context only.
 Neither image is consumed by the signal-processing pipeline or used as
 quantitative evidence for magnetic, remanence, eddy-current or strain results.
 
+## Preview
+
+| In-line inspection tool and test pipe | Four-point-bending and strain-gauge setup |
+|---|---|
+| ![406 mm in-line inspection tool and test pipe](406_inline_inspection_tool_setup.jpg) | ![406 mm four-point-bending and strain-gauge setup](406_four_point_bending_strain_setup.jpg) |
+
 ## Published files
 
 | Published file | Suggested title / description | Dimensions | SHA-256 |

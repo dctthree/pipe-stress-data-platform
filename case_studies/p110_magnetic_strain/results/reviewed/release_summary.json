@@ -16,6 +16,10 @@
     "sensor_scans_discovered": 53,
     "sensor_scans_completed": 53,
     "sensor_scans_failed": 0,
+    "clock_position_scan_counts": {
+      "6": 48,
+      "12": 5
+    },
     "strain_files_standardized": 18,
     "strain_values_standardized": 9380688,
     "channel_feature_rows": 639,

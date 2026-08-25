@@ -10,8 +10,11 @@ A traceable data pipeline for magnetic, remanence, eddy-current and strain-gauge
 
 | P110 magnetic + strain | 406 MEM/remanence/ETP |
 |---|---|
-| [![Real P110 reviewed magnetic evidence](case_studies/p110_magnetic_strain/results/reviewed/real_p110_magnetic_case.png)](case_studies/p110_magnetic_strain/README.md) | [![Real 406 calibration evidence](docs/results/real_406_calibration_features.png)](case_studies/406_multimodal/README.md) |
-| **Actual data:** three-axis magnetic probes and strain gauges. No independent remanence measurement and no ETP. Reviewed two-run evidence supports relative ordering only; direct MPa remains disabled. | **Actual data:** shared MEM/remanence magnetic arrays, independent ETP in blind repeats, and strain gauges in calibration. Fusion remains QC-gated; no blind MPa is claimed. |
+| [![P110 four-point-bending experiment](docs/results/field_photos/p110_sensor_pull_setup.jpg)](case_studies/p110_magnetic_strain/README.md) | [![406 four-point-bending experiment](docs/results/field_photos/406/406_four_point_bending_strain_setup.jpg)](case_studies/406_multimodal/README.md) |
+| **Experiment:** 10.54 m P110 casing under repeated four-point-bending pulls. The public index contains 48 six-o'clock pulls and five twelve-o'clock pulls; the reviewed complete-bilateral-MEM subset is six-o'clock only. | **Experiment:** 406 mm pipe calibration under four-point bending plus two complete blind pull cycles (C1/C2) and one partial cycle (C3) through the in-line inspection tool. |
+| **Sensors:** three-axis magnetic output in `Z/Y/X` order plus strain gauges. The reviewed result uses the complete bilateral MEM probe and preselected sensor IDs 1/3/4/5/6. No independent remanence stream and no ETP. | **Sensors:** 160 remanence and 160 MEM channels separated from one shared magnetic CSV, an independent 20-channel complex ETP stream in blind repeats, and strain gauges in calibration. |
+| [![Real P110 reviewed magnetic evidence](case_studies/p110_magnetic_strain/results/reviewed/real_p110_magnetic_case.png)](case_studies/p110_magnetic_strain/README.md) | [![Real 406 calibration evidence](case_studies/406_multimodal/results/calibration/07_physical_contrast_trends.png)](case_studies/406_multimodal/README.md) |
+| **Current evidence:** two reviewed P110 runs reproduce Q60–Q80 stress ordering, but their response scale differs; direct MPa remains disabled. | **Current evidence:** selected magnetic relative-change candidates survive the declared QC exclusions and same-pipe gates; ETP remains research/QC and no blind MPa is claimed. |
 | [Open P110 case](case_studies/p110_magnetic_strain/README.md) · [Real data v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) · [Field photos](docs/results/field_photos/README.md) | [Open 406 case](case_studies/406_multimodal/README.md) · [Real data v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) · [Field photos](docs/results/field_photos/406/README.md) |
 
 Both cards above use real experimental results, not the synthetic reader demo. The two experiments share the traceable platform but retain separate measurement contracts, configurations, evidence and claim limits.
@@ -20,13 +23,39 @@ Both cards above use real experimental results, not the synthetic reader demo. T
 
 | Campaign | Available measurements | Design and truth boundary |
 |---|---|---|
-| P110 EXP2 | Three-axis magnetic probes + strain gauges | Two complete repeated runs in the published package. No independent remanence dataset and no ETP data. |
+| P110 EXP2 | Three-axis magnetic probes + strain gauges | The full package spans five probe hardware conditions and 53 magnetic scans. The reviewed complete-bilateral-MEM subset contains two full runs. No independent remanence dataset and no ETP data. |
 | 406 calibration | One shared magnetic CSV stream split by verified physical-column parity into MEM and remanence groups + strain gauges | Zero load S0 plus six loaded states S1–S6. Reported MPa values are `206 GPa × median bending strain`, not load-cell truth. No stage-matched ETP calibration data. |
 | 406 blind repeats | The same shared MEM/remanence magnetic stream + an independent 20-channel complex ETP stream | C1 and C2 are complete S0–S6; C3 contains S0–S2 only: 17 paired packets. No contemporaneous strain/MPa truth. |
 
 The modality boundaries are deliberate. In the 406 magnetic files, 32 physical columns each carry 10 sensing positions. One-based odd physical columns are the 160 remanence channels and even physical columns are the 160 MEM channels. They are two sensor groups inside the same 1307-field magnetic CSV—not two separately acquired files. ETP is independently acquired.
 
-## Real 406 evidence
+## P110 experimental case — magnetic + strain
+
+### Experiment and sensor setup
+
+| P110 four-point-bending loading rig | Loading head, pipe and strain-gauge wiring |
+|---|---|
+| ![P110 four-point-bending loading rig](docs/results/field_photos/p110_field_test_overview.jpg) | ![P110 loading head and strain-gauge wiring](docs/results/field_photos/p110_sensor_pull_setup.jpg) |
+
+| Component | Description |
+|---|---|
+| Pipe and loading | P110 casing, 10.54 m long, 139.70 mm OD and 9.17 mm wall, tested under repeated four-point bending |
+| Pull positions | The public scan index contains 48 pulls at 6 o'clock and five single-side-slotted-MEM pulls at 12 o'clock; all reviewed complete-bilateral-MEM rows are from the 6 o'clock tensile side |
+| Magnetic sensors | Three-axis CSV order `Z/Y/X`; the reviewed evidence uses the complete bilateral MEM configuration and preselected sensor IDs 1/3/4/5/6 |
+| Reference measurement | Matched strain gauges; the plotted MPa values are strain-gauge-derived, not load-cell truth |
+| Modality boundary | Magnetic sensor output + strain only; no ETP and no independently acquired remanence stream |
+
+The photographs are real experimental context and are not numerical analysis inputs. Their provenance and metadata-removal record are published in the [P110 photo notes](docs/results/field_photos/README.md).
+
+### Reviewed real analysis
+
+The figure below uses the real reviewed 6 o'clock tensile-side subset. Probe names that mention a magnetizing section describe hardware conditions, not an independently acquired remanence modality.
+
+![Real P110 magnetic and strain case study](case_studies/p110_magnetic_strain/results/reviewed/real_p110_magnetic_case.png)
+
+Five preselected magnetic sensors in the reviewed X-axis workflow reproduce stress ordering in two complete-bilateral-MEM runs, while their direct linear slopes differ substantially. Conservative whole-trace QC and the later X-axis-specific review do not assign identical status, so this remains an exploratory relative-ordering candidate—not a set of universally certified channels or a direct-MPa calibration. See the [complete P110 case](case_studies/p110_magnetic_strain/README.md) and [P110 v0.2.0 data](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0).
+
+## 406 experimental case — MEM/remanence/ETP
 
 ### Test setup
 
@@ -36,11 +65,19 @@ The modality boundaries are deliberate. In the 406 magnetic files, 32 physical c
 
 The photographs provide physical context only and are not analysis inputs. Browser copies are colour-normalized, resized and stripped of metadata; provenance and the background-person privacy note are recorded in the [photo notes](docs/results/field_photos/406/README.md).
 
+| Component | Description |
+|---|---|
+| Pipe and loading | 406 mm pipe under four-point-bending calibration, followed by complete blind cycles C1/C2 and partial cycle C3 |
+| Magnetic array | 32 physical columns × 10 sensing positions; one-based odd columns form 160 remanence channels and even columns form 160 MEM channels in the same CSV |
+| ETP | Independent 20-channel complex eddy-current stream in the blind repeats |
+| Reference measurement | Strain gauges in the calibration experiment; the blind cycles have no contemporaneous strain/MPa truth |
+| Fusion boundary | Fail-closed modality/QC gating; no numerical fusion value and no blind MPa output |
+
 ### Calibration and repeatability
 
 The first figure is generated from the real 406 calibration run and its strain-gauge-derived nominal bending stress. It is useful development evidence, but it is one calibration sequence and must not be interpreted as independent validation.
 
-![Real 406 calibration feature relationships](docs/results/real_406_calibration_features.png)
+![Real 406 calibration feature relationships](case_studies/406_multimodal/results/calibration/07_physical_contrast_trends.png)
 
 The second figure shows all available blind-repeat packets. It deliberately retains the C2/S2 operator/QC rejection and the partial C3 trajectory instead of hiding them.
 
@@ -54,14 +91,6 @@ The most defensible engineering policy is:
 - The current fusion code is fail-closed modality/QC eligibility gating. Because ETP does not pass its cohort gates, outputs remain magnetic-relative-only; no numeric fusion or blind MPa is produced. Explicit stagewise cross-modality conflict scoring is a required future gate, not an implemented result in this release.
 
 See the [406 case study](case_studies/406_multimodal/README.md) for formulas, all derived tables, 13 reproducible blind-repeat figures, one frozen calibration figure with redraw data/code, MATLAB source and validation rules.
-
-## Real P110 evidence
-
-P110 EXP2 contains magnetic-probe and strain-gauge measurements only. Probe names that mention a magnetizing section describe hardware conditions, not an independently acquired remanence modality.
-
-![Real P110 magnetic and strain case study](docs/results/real_p110_magnetic_case.png)
-
-Five preselected magnetic sensors in the reviewed X-axis workflow reproduce stress ordering in two complete-bilateral-MEM runs, while their direct linear slopes differ substantially. Conservative whole-trace QC and the later X-axis-specific review do not assign identical status, so this remains an exploratory relative-ordering candidate—not a set of universally certified channels or a direct-MPa calibration. See the [complete P110 case](case_studies/p110_magnetic_strain/README.md) and [field-photo notes](docs/results/field_photos/README.md).
 
 ## Why this repository exists
 

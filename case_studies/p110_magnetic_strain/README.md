@@ -4,6 +4,21 @@
 
 This is the first-class P110 entry point. It collects the real evidence, corrected public configuration, Python/MATLAB redraw programs, immutable Release identity and fail-closed validation rules that were previously scattered across the repository.
 
+## Field experiment and sensor context / 现场实验与传感器
+
+| P110 four-point-bending loading rig | Central loading head, pipe and strain-gauge wiring |
+|---|---|
+| ![P110 four-point-bending loading rig](../../docs/results/field_photos/p110_field_test_overview.jpg) | ![P110 central loading head and strain-gauge wiring](../../docs/results/field_photos/p110_sensor_pull_setup.jpg) |
+
+| Item | Description |
+|---|---|
+| Experiment | Repeated four-point-bending pulls on the same P110 casing; the public index contains 48 six-o'clock scans and five twelve-o'clock scans, with all five twelve-o'clock scans belonging to the single-side-slotted MEM sequence |
+| Magnetic acquisition | Three-axis output stored in `Z/Y/X` order; multiple probe hardware configurations were tested |
+| Reviewed sensor subset | Complete bilateral MEM probe, 6 o'clock tensile side, preselected sensor IDs 1/3/4/5/6, and same-run zero-load reference |
+| Strain reference | Strain gauges provide the matched development labels; the photographs show the loading fixture and strain wiring, not the internal magnetic probe itself |
+
+The photographs provide real physical context only and are not numerical analysis inputs. Published copies and their provenance are documented in the [photo record](../../docs/results/field_photos/README.md).
+
 ## Measurement boundary
 
 | Item | Frozen description |
