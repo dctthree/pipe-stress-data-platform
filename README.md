@@ -10,6 +10,18 @@ The pipeline turns scattered CSV/XLSX/native acquisition files into immutable ra
 
 ## Real P110 evidence first
 
+### Experimental setup
+
+These are real photographs of the P110 four-point-bending pull-test setup. They provide physical context only and are not analysis inputs.
+
+| Overall rig and pipe arrangement | Central loading assembly and strain-gauge wiring |
+|---|---|
+| ![P110 field-test overview](docs/results/field_photos/p110_field_test_overview.jpg) | ![P110 loading head and strain gauges](docs/results/field_photos/p110_sensor_pull_setup.jpg) |
+
+The browser-compatible copies are auto-oriented, resized and stripped of EXIF/ICC metadata. Provenance and conversion details are recorded in [the field-photo notes](docs/results/field_photos/README.md).
+
+### Multi-sensor magnetic result
+
 The figure below is generated from the **new real P110 EXP2 complete-bilateral-MEM campaign**, not from synthetic demo data. It uses five valid magnetic sensors (IDs 1/3/4/5/6), two complete repeated runs, X-axis clipping-aware Q60–Q80 shifts relative to each run's zero-load scan, and strain-gauge-derived bending stress.
 
 ![Real P110 magnetic and strain case study](docs/results/real_p110_magnetic_case.png)

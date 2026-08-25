@@ -6,6 +6,18 @@
 
 ## 首页优先展示真实 P110 数据
 
+### 现场实验布置
+
+以下两张照片来自真实P110四点弯牵拉试验现场，仅用于说明物理实验布置，不作为数据分析输入。
+
+| 试验台与管道整体布置 | 中央加载构件与应变片接线 |
+|---|---|
+| ![P110现场试验整体图](docs/results/field_photos/p110_field_test_overview.jpg) | ![P110压头与应变片布置](docs/results/field_photos/p110_sensor_pull_setup.jpg) |
+
+公开JPEG已完成方向校正、尺寸压缩并删除EXIF/ICC元数据；照片来源和转换记录见[现场照片说明](docs/results/field_photos/README.md)。
+
+### 多传感磁信号结果
+
 下图直接来自**新一轮真实 P110 EXP2 完整双磁极 MEM 多传感实验**，不是合成 Demo。使用5个有效磁传感器（1、3、4、5、6）、两轮完整重复实验、相对各轮零载的X轴削顶感知Q60–Q80分位增量，以及应变片推导弯曲应力。
 
 ![真实P110磁信号与应变案例](docs/results/real_p110_magnetic_case.png)
