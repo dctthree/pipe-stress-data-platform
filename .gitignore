@@ -1,6 +1,7 @@
 # Local/raw data and generated releases
 lake/
 deliverables/
+deliverables_github/
 configs/p110_exp2.json
 labels/p110_exp2_stress_labels.csv
 
@@ -28,4 +29,3 @@ slprj/
 .vscode/
 .DS_Store
 Thumbs.db
-
