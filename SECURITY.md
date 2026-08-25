@@ -7,6 +7,5 @@ Before publishing a release:
 - verify repository visibility;
 - inspect staged files with `git status`;
 - scan for absolute user paths and tokens;
-- keep raw/full data in a private release or controlled object store;
+- publish raw/full data only after explicit scope approval; otherwise keep it in a private release or controlled object store;
 - validate release SHA-256 and access permissions.
-

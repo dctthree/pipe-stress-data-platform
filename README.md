@@ -73,9 +73,9 @@ Expected outputs:
 
 Modality scope: three-axis magnetic probe signals plus strain-gauge records. No ETP channels are present. Names that describe a magnetizing section or probe condition are experimental hardware labels, not an additional independently acquired remanence modality.
 
-The curated table behind the figure contains only derived values from the reviewed real experiment; the raw magnetic and strain files remain in the private Release. The single-side-slotted probe is not used for this headline evidence.
+The curated table behind the figure contains only derived values from the reviewed real experiment; the raw magnetic and strain files are distributed in the full-data Release. The single-side-slotted probe is not used for this headline evidence.
 
-Recreate it after downloading/extracting the private full-data release:
+Recreate it from the tracked derived table, or compare it with the extracted full-data release:
 
 ```powershell
 python examples/generate_real_p110_case.py
@@ -93,11 +93,11 @@ The local full-data run used 211 source files:
 | Integrity/lineage checks | 40/40 passed |
 | Unique raw blobs after deduplication | 201 |
 
-The real raw data are deliberately excluded from Git history. For an authorized private deployment, publish the full data lake as a GitHub Release asset or store it in an immutable object store.
+The real raw data are deliberately excluded from Git history so that source-code clones stay small. The explicitly approved P110 EXP2 dataset is distributed as a versioned GitHub Release asset; other campaigns should use a release or immutable object store only after their publication scope is reviewed.
 
-## Private full-data release
+## Public full-data release
 
-Authorized collaborators can download the frozen P110 EXP2 package from the private [v0.2.0 release](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0).
+The frozen P110 EXP2 package can be downloaded from the public [v0.2.0 release](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0).
 
 | Asset | Size | SHA-256 |
 |---|---:|---|
@@ -155,6 +155,6 @@ d = loadStressDataset('lake/dataset_index.json');
 
 Tracked in Git: source code, schemas, templates, tests, deterministic demo and documentation.
 
-Not tracked in Git: raw customer/experimental files, local absolute-path configs, verified private labels, generated lakes and large release ZIP files.
+Not tracked in Git: raw experimental files, local absolute-path configs, local label sources, generated lakes and large release ZIP files. The reviewed P110 EXP2 ZIP is published separately as a Release asset.
 
 No open-source license is granted by default. See [NOTICE.md](NOTICE.md).

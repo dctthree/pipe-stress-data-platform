@@ -12,9 +12,9 @@
 
 两轮Q60–Q80对应力排序均复现（Spearman ρ约为1），但按图中直接线性拟合计算，跨轮标定斜率仍相差约1.8–2.2倍。因此它是较有说服力的相对应力排序特征，还不是可直接迁移的MPa定量模型。首页不再使用单侧开槽探头作为主要证据。
 
-## 私有全量数据版本
+## 公开全量数据版本
 
-获得仓库权限的协作者可从私有 [v0.2.0 Release](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) 下载冻结的 P110 EXP2 数据包：
+任何读者均可从公开 [v0.2.0 Release](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) 下载冻结的 P110 EXP2 数据包：
 
 | 附件 | 大小 | SHA-256 |
 |---|---:|---|
