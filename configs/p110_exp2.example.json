@@ -25,16 +25,20 @@
   },
   "filename_parser": {
     "pattern": "^(?P<stage_mm>\\d+(?:\\.\\d+)?)-(?P<clock_position>6|12)(?P<suffix>.*)$",
-    "technical_repeat_markers": {"第二次": 2},
+    "technical_repeat_markers": {"第二次": 2, "第三次": 3},
     "recovery_pattern": "(?P<recovery_min>\\d+(?:\\.\\d+)?)min"
   },
   "probe_aliases": {
     "MEM": {"probe_id": "MEM_FULL", "probe_family": "MEM", "magnetization_mode": "active", "pole_geometry": "bilateral_intact"}
   },
   "run_rules": [
-    {"probe_id": "MEM_FULL", "folder_contains": "第一次", "run_id": "mem_r1", "run_order": 1, "recommended": true, "default_loading_branch": "loading"}
+    {"probe_id": "MEM_FULL", "folder_contains": "第一次", "run_id": "mem_r1", "run_order": 1, "recommended": true, "default_loading_branch": "loading"},
+    {"probe_id": "MEM_FULL", "folder_contains": "第三次", "run_id": "mem_r2", "run_order": 2, "recommended": true, "default_loading_branch": "loading"}
   ],
-  "stage_sequences": {"mem_r1": [0, 20, 40, 60]},
+  "stage_sequences": {
+    "mem_r1": [0, 20, 40, 60],
+    "mem_r2": [0, 20, 40, 60]
+  },
   "stage_overrides": [],
   "strain_run_rules": [],
   "signal_schema": {
@@ -60,4 +64,3 @@
     "store_full_signal": true
   }
 }
-

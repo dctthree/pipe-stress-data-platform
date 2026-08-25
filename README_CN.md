@@ -2,6 +2,16 @@
 
 本工程把 406/P110 四点弯牵拉实验整理成可追溯、可增量、可供 MATLAB、Python 和 AI 共用的数据链。它不会修改源目录中的任何文件。
 
+## 私有全量数据版本
+
+获得仓库权限的协作者可从私有 [v0.2.0 Release](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) 下载冻结的 P110 EXP2 数据包：
+
+| 附件 | 大小 | SHA-256 |
+|---|---:|---|
+| `P110_EXP2_full_release_1.0.0+97b0dca62768.zip` | 169,639,531 字节 | `38cc098c9a590f05efea429073e7c17c0b2c5f8b0232a7625e50957e05fa6a7c` |
+
+解压后以 `dataset_index.json` 为唯一程序入口，不要重新依靠文件名猜测实验阶段。Release 是冻结研究制品；新增实验应创建新配置、独立标签和新数据集版本，禁止覆盖已发布文件。
+
 ## 数据分层
 
 | 层级 | 内容 | 约束 |

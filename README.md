@@ -75,6 +75,22 @@ The local full-data run used 211 source files:
 
 The real raw data are deliberately excluded from Git history. For an authorized private deployment, publish the full data lake as a GitHub Release asset or store it in an immutable object store.
 
+## Private full-data release
+
+Authorized collaborators can download the frozen P110 EXP2 package from the private [v0.2.0 release](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0).
+
+| Asset | Size | SHA-256 |
+|---|---:|---|
+| `P110_EXP2_full_release_1.0.0+97b0dca62768.zip` | 169,639,531 bytes | `38cc098c9a590f05efea429073e7c17c0b2c5f8b0232a7625e50957e05fa6a7c` |
+
+After extraction, start from `dataset_index.json`; do not infer experimental stages by scanning filenames. Validate a local copy before analysis:
+
+```powershell
+python run_pipeline.py validate --output path/to/extracted_release --full-hash
+```
+
+The Release is a frozen research artifact. Add new experiments through a new configuration and label file, then generate a new dataset version instead of editing the released files.
+
 ## Run on a local experiment
 
 1. Copy [configs/experiment_template.json](configs/experiment_template.json).
@@ -122,4 +138,3 @@ Tracked in Git: source code, schemas, templates, tests, deterministic demo and d
 Not tracked in Git: raw customer/experimental files, local absolute-path configs, verified private labels, generated lakes and large release ZIP files.
 
 No open-source license is granted by default. See [NOTICE.md](NOTICE.md).
-

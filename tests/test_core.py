@@ -19,7 +19,9 @@ from stressdata.pipeline import run_pipeline  # noqa: E402
 
 class MetadataTests(unittest.TestCase):
     def test_unicode_probe_and_repeat_parser(self):
-        config = json.loads((ROOT / "configs" / "p110_exp2.json").read_text(encoding="utf-8"))
+        config = json.loads(
+            (ROOT / "configs" / "p110_exp2.example.json").read_text(encoding="utf-8")
+        )
         meta = parse_scan_metadata("MEM/第三次/60-6-第二次.csv", "a" * 64, config)
         self.assertIsNotNone(meta)
         self.assertEqual(meta["probe_id"], "MEM_FULL")
@@ -96,4 +98,3 @@ class PipelineSmokeTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
