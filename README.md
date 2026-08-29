@@ -1,11 +1,15 @@
 # Pipe Stress Sensing Benchmark & Data Platform
 
 [![CI](https://github.com/dctthree/pipe-stress-data-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/dctthree/pipe-stress-data-platform/actions/workflows/ci.yml)
-[![Latest release](https://img.shields.io/github/v/release/dctthree/pipe-stress-data-platform?label=real-data%20release)](https://github.com/dctthree/pipe-stress-data-platform/releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/dctthree/pipe-stress-data-platform?label=platform%20release)](https://github.com/dctthree/pipe-stress-data-platform/releases/latest)
 [![Python](https://img.shields.io/badge/Python-%E2%89%A53.10-3776AB?logo=python&logoColor=white)](pyproject.toml)
 [![MATLAB](https://img.shields.io/badge/MATLAB-R2024b-E16737)](matlab/loadStressDataset.m)
+[![Code licence](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
+[![Data licence](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](DATA_LICENSE.md)
 
 **Real pull-test data · Reproducible Python/MATLAB workflows · Explicit claim limits**
+
+![Pipe Stress Sensing Benchmark — real P110 and 406-mm experiments](docs/social-preview.png)
 
 [中文说明](README_CN.md) · [P110 magnetic + strain case](case_studies/p110_magnetic_strain/README.md) · [406 multimodal case](case_studies/406_multimodal/README.md) · [Demo](demo/README.md) · [AI data contract](docs/AI_DATA_CONTRACT.md) · [Acquisition SOP](docs/工业采集元数据SOP.md)
 
@@ -24,7 +28,7 @@ A traceable data pipeline for magnetic, remanence, eddy-current and strain-gauge
 | Reproduce, question or extend a result | [Open a structured issue](https://github.com/dctthree/pipe-stress-data-platform/issues/new/choose) or join [Discussions](https://github.com/dctthree/pipe-stress-data-platform/discussions) |
 | Share the project without overstating its evidence | [Bilingual project share kit](docs/SHARE_KIT.md) |
 
-> **Reuse status:** the repository is public, but no open-source licence has yet been granted. Until code and data licences are added, cite and link to the repository but do not assume redistribution or commercial-use rights; see [NOTICE](NOTICE.md).
+> **Reuse status:** software is open source under [Apache-2.0](LICENSE). Experimental data, public tables, result figures and field-test photographs are available under [CC BY 4.0](DATA_LICENSE.md) unless stated otherwise. Cite the exact frozen release used.
 
 ## Two real-data case studies
 
@@ -190,4 +194,12 @@ d = loadStressDataset('lake/dataset_index.json');
 - Relative changes cannot identify total residual stress from a single scan.
 - Direct MPa output remains disabled until calibration, uncertainty and independent blind validation are frozen.
 
-Tracked in Git: code, schemas, templates, tests, compact derived tables, figures and documentation. Raw experimental files and large release archives stay in GitHub Releases. No open-source licence is granted by default; see [NOTICE.md](NOTICE.md).
+## Citation and licences
+
+The project author/creator is **Bin Gao, University of Electronic Science and Technology of China (UESTC)**. GitHub's **Cite this repository** panel reads [CITATION.cff](CITATION.cff); Zenodo-ready metadata is provided in [.zenodo.json](.zenodo.json).
+
+- Software code: [Apache License 2.0](LICENSE)
+- Experimental data, tables, figures, photographs and data-oriented documentation: [CC BY 4.0](DATA_LICENSE.md)
+- Recommended attribution: `Gao, Bin (2026). Pipe Stress Sensing Benchmark & Data Platform. UESTC.` plus the repository URL, frozen release tag and checksum/fingerprint.
+
+Tracked in Git: code, schemas, templates, tests, compact derived tables, figures and documentation. Raw experimental files and large release archives stay in GitHub Releases; the same data licence and release-specific evidence limits apply.

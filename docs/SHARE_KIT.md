@@ -30,6 +30,10 @@ We have released a public research repository for traceable pipeline-stress sens
 
 Repository: https://github.com/dctthree/pipe-stress-data-platform
 
+Code is licensed under Apache-2.0; experimental data and published media are licensed under CC BY 4.0. Author/creator: Bin Gao, UESTC.
+
+代码采用 Apache-2.0；实验数据与公开媒体采用 CC BY 4.0。作者/创建者：Bin Gao，UESTC。
+
 ## Compact post for X / short-form channels
 
 Real pipe pull-test data, not synthetic evidence: P110 magnetic+strain and 406-mm MEM/remanence/ETP case studies, with reproducible Python/MATLAB workflows, QC failures retained, and explicit limits on stress claims. https://github.com/dctthree/pipe-stress-data-platform
@@ -48,6 +52,7 @@ We are looking for independent users in pipeline in-line inspection, electromagn
 
 | Asset | What it shows | Boundary |
 |---|---|---|
+| [Social preview](social-preview.png) | 1280×640 composite of the real P110 and 406 experiments | Approved project card; source layout in `social-preview.html` |
 | [P110 field-test overview](results/field_photos/p110_field_test_overview.jpg) | Real P110 four-point-bending setup | Context photograph; not a numerical input |
 | [P110 sensor pull setup](results/field_photos/p110_sensor_pull_setup.jpg) | Real sensor, loading head and strain wiring | Context photograph; not a numerical input |
 | [P110 reviewed result](../case_studies/p110_magnetic_strain/results/reviewed/real_p110_magnetic_case.png) | Real reviewed magnetic/strain subset | Relative-ordering evidence; not transferable MPa calibration |
@@ -72,10 +77,10 @@ Do not use images under `demo/results/` as experimental evidence. They are deter
 - Do not describe the synthetic demo as a real experiment.
 - Do not claim independent-pipe absolute-MPa validation.
 - Do not hide declared QC failures or the partial third 406 cycle.
-- Do not describe public visibility as an open-source licence until explicit code and data licences are added.
+- When describing the project as open source, retain links to both the Apache-2.0 code licence and the CC BY 4.0 data/media licence.
 
 - 不得声称 P110 含有独立剩磁或 ETP 模态。
 - 不得把合成 Demo 描述为真实实验。
 - 不得声称已经完成独立新管道绝对 MPa 验证。
 - 不得隐去已声明的 QC 失败和 406 第三个不完整周期。
-- 在明确加入代码及数据许可证前，不得把“公开可见”等同于“已授予开源权利”。
+- 使用“开源项目”表述时，应同时保留 Apache-2.0 代码许可证和 CC BY 4.0 数据/媒体许可证链接。

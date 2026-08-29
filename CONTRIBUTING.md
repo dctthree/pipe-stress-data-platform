@@ -2,6 +2,8 @@
 
 Independent reproduction, including a failed or different result, is the most valuable contribution at the current stage. Use the structured **Reproduction report** issue and identify the release tag, asset checksum/fingerprint, environment and exact command. For open-ended interpretation or hardware discussions, use GitHub Discussions.
 
+Unless explicitly marked otherwise, intentionally submitted software contributions are accepted under Apache-2.0 as described in Section 5 of that licence. Submitted experimental data or media must be owned or authorised by the contributor and may be included only with an explicit CC BY 4.0 attribution statement.
+
 1. Never commit raw customer or field data, local absolute paths, credentials or blind labels.
 2. Add a manifest/config fixture and a regression test for every new sensor adapter.
 3. Bump the relevant standardizer/feature version when output semantics change.

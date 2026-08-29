@@ -1,11 +1,15 @@
 # 管道应力磁感知实验基准与数据平台
 
 [![持续集成](https://github.com/dctthree/pipe-stress-data-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/dctthree/pipe-stress-data-platform/actions/workflows/ci.yml)
-[![最新真实数据版本](https://img.shields.io/github/v/release/dctthree/pipe-stress-data-platform?label=%E7%9C%9F%E5%AE%9E%E6%95%B0%E6%8D%AE%E7%89%88%E6%9C%AC)](https://github.com/dctthree/pipe-stress-data-platform/releases/latest)
+[![最新平台版本](https://img.shields.io/github/v/release/dctthree/pipe-stress-data-platform?label=%E5%B9%B3%E5%8F%B0%E7%89%88%E6%9C%AC)](https://github.com/dctthree/pipe-stress-data-platform/releases/latest)
 [![Python](https://img.shields.io/badge/Python-%E2%89%A53.10-3776AB?logo=python&logoColor=white)](pyproject.toml)
 [![MATLAB](https://img.shields.io/badge/MATLAB-R2024b-E16737)](matlab/loadStressDataset.m)
+[![代码许可证](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
+[![数据许可证](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](DATA_LICENSE.md)
 
 **真实牵拉数据 · Python/MATLAB 可复现流程 · 明确限定结论边界**
+
+![管道应力磁感知实验基准——真实P110与406毫米管道实验](docs/social-preview.png)
 
 [English](README.md) · [P110 磁传感+应变案例](case_studies/p110_magnetic_strain/README.md) · [406 三模态案例](case_studies/406_multimodal/README.md) · [演示数据](demo/README.md) · [AI 数据契约](docs/AI_DATA_CONTRACT.md) · [采集 SOP](docs/工业采集元数据SOP.md)
 
@@ -24,7 +28,7 @@
 | 反馈复现结果、数据疑问或新方法 | [按模板提交 Issue](https://github.com/dctthree/pipe-stress-data-platform/issues/new/choose)或进入[讨论区](https://github.com/dctthree/pipe-stress-data-platform/discussions) |
 | 对外转发且不夸大结论 | [中英文项目推广素材](docs/SHARE_KIT.md) |
 
-> **复用状态：**仓库已经公开，但目前尚未授予开源许可证。在代码许可证和数据许可证正式加入前，可以引用和链接本仓库，但不能默认获得再分发或商业使用权；详见[权利声明](NOTICE.md)。
+> **复用状态：**软件代码按 [Apache-2.0](LICENSE) 正式开源；实验数据、公开表格、结果图和现场照片除非另有说明，均按 [CC BY 4.0](DATA_LICENSE.md) 开放。使用时应引用具体冻结版本。
 
 ## 两个同级真实数据项目
 
@@ -189,4 +193,12 @@ d = loadStressDataset('lake/dataset_index.json');
 - 相对变化无法从单次扫描辨识总残余应力。
 - 只有完成冻结标定、不确定度评估和独立盲测后，才允许开放直接 MPa 输出。
 
-Git 中只保存代码、格式、模板、测试、小型派生表、结果图和说明；原始实验文件与大型压缩包放在 GitHub Releases。项目默认不授予开源许可，详见 [NOTICE.md](NOTICE.md)。
+## 引用与许可证
+
+项目作者为 **Bin Gao，电子科技大学（UESTC）**。GitHub 的“Cite this repository”入口读取 [CITATION.cff](CITATION.cff)，供 Zenodo 使用的元数据见 [.zenodo.json](.zenodo.json)。
+
+- 软件代码：[Apache License 2.0](LICENSE)
+- 实验数据、表格、结果图、照片和数据说明：[CC BY 4.0](DATA_LICENSE.md)
+- 推荐署名：`Gao, Bin (2026). Pipe Stress Sensing Benchmark & Data Platform. UESTC.`，并附仓库链接、冻结版本号和校验值/数据指纹。
+
+Git 中只保存代码、格式、模板、测试、小型派生表、结果图和说明；原始实验文件与大型压缩包放在 GitHub Releases，并采用同一数据许可证及各版本声明的证据边界。

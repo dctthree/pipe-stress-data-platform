@@ -1,8 +1,21 @@
 [project]
 name = "pipe-stress-data-platform"
-version = "0.3.0"
+version = "0.4.0"
 description = "Traceable multimodal pull-test data pipeline for pipeline stress experiments"
+readme = "README.md"
 requires-python = ">=3.10"
+authors = [
+  { name = "Bin Gao" },
+]
+license = { file = "LICENSE" }
+keywords = [
+  "pipeline inspection",
+  "pipeline stress",
+  "magnetic sensing",
+  "eddy-current testing",
+  "strain gauge",
+  "reproducible research",
+]
 dependencies = [
   "numpy>=1.26",
   "pandas>=2.1",
@@ -15,6 +28,12 @@ demo = ["matplotlib>=3.8"]
 
 [project.scripts]
 stress-data = "stressdata.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/dctthree/pipe-stress-data-platform"
+Repository = "https://github.com/dctthree/pipe-stress-data-platform"
+Documentation = "https://github.com/dctthree/pipe-stress-data-platform#readme"
+Issues = "https://github.com/dctthree/pipe-stress-data-platform/issues"
 
 [build-system]
 requires = ["setuptools>=68"]

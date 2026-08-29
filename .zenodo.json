@@ -1,0 +1,21 @@
+{
+  "title": "Pipe Stress Sensing Benchmark & Data Platform",
+  "description": "Traceable real-data workflows for P110 magnetic-strain and 406-mm MEM-remanence-eddy-current pull tests, with QC-first relative stress assessment and explicit limits on absolute-MPa claims.",
+  "creators": [
+    {
+      "name": "Gao, Bin",
+      "affiliation": "University of Electronic Science and Technology of China (UESTC)"
+    }
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "pipeline inspection",
+    "pipeline stress assessment",
+    "magnetic sensing",
+    "remanence",
+    "eddy-current testing",
+    "strain gauge",
+    "four-point bending",
+    "reproducible research"
+  ]
+}

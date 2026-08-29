@@ -1,8 +1,12 @@
 # Notice
 
-Copyright (c) 2026. All rights reserved.
+Pipe Stress Sensing Benchmark & Data Platform
 
-This repository is publicly accessible for research and engineering evaluation. Public visibility does not itself grant a patent, commercial-use, redistribution or open-source license; those rights require an explicit license from the repository owner.
+Copyright (c) 2026 Bin Gao, University of Electronic Science and Technology of China (UESTC).
+
+Software source code, MATLAB/Python programs, schemas, configuration templates and CI workflows are licensed under the Apache License, Version 2.0. Experimental data, dataset indexes, compact and derived tables, result figures, public field-test photographs and data-oriented documentation are licensed under Creative Commons Attribution 4.0 International unless a file or release asset states otherwise. See [LICENSE](LICENSE) and [DATA_LICENSE.md](DATA_LICENSE.md).
+
+Apache-2.0 does not grant rights to names or trademarks beyond reasonable attribution. CC BY 4.0 does not waive privacy, publicity, trademark, patent or other rights that may apply.
 
 The included synthetic demo is deterministic, de-identified structural demonstration data. It must not be presented as field validation or as evidence that direct stress values in MPa can be inferred on a new pipeline.
 

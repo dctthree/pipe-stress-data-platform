@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, experimental data, figures or workflows, please
+  cite the repository and the specific frozen release used.
+title: Pipe Stress Sensing Benchmark & Data Platform
+type: software
+authors:
+  - family-names: Gao
+    given-names: Bin
+    affiliation: University of Electronic Science and Technology of China (UESTC)
+abstract: >-
+  A traceable research platform for real P110 magnetic-strain and 406-mm
+  MEM-remanence-eddy-current pull-test data, with reproducible Python and
+  MATLAB workflows, explicit quality-control provenance and conservative
+  stress-assessment claim limits.
+version: 0.4.0
+date-released: 2026-08-29
+repository-code: https://github.com/dctthree/pipe-stress-data-platform
+url: https://github.com/dctthree/pipe-stress-data-platform
+license: Apache-2.0
+keywords:
+  - pipeline inspection
+  - pipeline stress assessment
+  - magnetic sensing
+  - remanence
+  - eddy-current testing
+  - strain gauge
+  - four-point bending
+  - reproducible research
