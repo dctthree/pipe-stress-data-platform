@@ -1,6 +1,6 @@
 [project]
 name = "pipe-stress-data-platform"
-version = "0.4.0"
+version = "0.4.1"
 description = "Traceable multimodal pull-test data pipeline for pipeline stress experiments"
 readme = "README.md"
 requires-python = ">=3.10"

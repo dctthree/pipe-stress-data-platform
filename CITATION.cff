@@ -13,7 +13,7 @@ abstract: >-
   MEM-remanence-eddy-current pull-test data, with reproducible Python and
   MATLAB workflows, explicit quality-control provenance and conservative
   stress-assessment claim limits.
-version: 0.4.0
+version: 0.4.1
 date-released: 2026-08-29
 repository-code: https://github.com/dctthree/pipe-stress-data-platform
 url: https://github.com/dctthree/pipe-stress-data-platform
