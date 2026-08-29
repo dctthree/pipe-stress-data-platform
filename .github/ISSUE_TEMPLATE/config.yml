@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Project discussions
+    url: https://github.com/dctthree/pipe-stress-data-platform/discussions
+    about: Use Discussions for open-ended interpretation, collaboration and hardware questions.
+  - name: Private security report
+    url: https://github.com/dctthree/pipe-stress-data-platform/security/advisories/new
+    about: Report credentials, sensitive data exposure or security problems privately.

@@ -1,0 +1,39 @@
+name: Feature or method proposal
+description: Propose a physically motivated feature, QC gate, alignment method or validation test.
+title: "[Method]: "
+labels:
+  - method-proposal
+body:
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - P110 magnetic + strain
+        - 406 magnetic/remanence
+        - 406 ETP
+        - Multimodal fusion
+        - Data platform or AI split
+    validations:
+      required: true
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Physical or statistical hypothesis
+      description: State why the proposed quantity should change with stress and which confounders may produce the same response.
+    validations:
+      required: true
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Reproducible implementation
+      description: Give equations, parameters, ROI rules and the stage/run split without using blind labels for tuning.
+    validations:
+      required: true
+  - type: textarea
+    id: falsification
+    attributes:
+      label: Falsification and acceptance test
+      description: Define negative controls, repeated-run tests and conditions under which the proposal should be rejected.
+    validations:
+      required: true

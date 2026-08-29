@@ -1,10 +1,30 @@
-# Pipe Stress Data Magnetic Sensing Platform
+# Pipe Stress Sensing Benchmark & Data Platform
+
+[![CI](https://github.com/dctthree/pipe-stress-data-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/dctthree/pipe-stress-data-platform/actions/workflows/ci.yml)
+[![Latest release](https://img.shields.io/github/v/release/dctthree/pipe-stress-data-platform?label=real-data%20release)](https://github.com/dctthree/pipe-stress-data-platform/releases/latest)
+[![Python](https://img.shields.io/badge/Python-%E2%89%A53.10-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![MATLAB](https://img.shields.io/badge/MATLAB-R2024b-E16737)](matlab/loadStressDataset.m)
+
+**Real pull-test data · Reproducible Python/MATLAB workflows · Explicit claim limits**
 
 [中文说明](README_CN.md) · [P110 magnetic + strain case](case_studies/p110_magnetic_strain/README.md) · [406 multimodal case](case_studies/406_multimodal/README.md) · [Demo](demo/README.md) · [AI data contract](docs/AI_DATA_CONTRACT.md) · [Acquisition SOP](docs/工业采集元数据SOP.md)
 
 A traceable data pipeline for magnetic, remanence, eddy-current and strain-gauge pull-test data used in pipeline-stress research. It turns scattered CSV/XLSX/native acquisition files into immutable assets, typed tables, quality-control records, versioned features and leakage-safe AI inputs.
 
 > Research/engineering foundation. Quantitative MPa output remains fail-closed until a frozen model passes independent-pipe blind validation.
+
+## Start here
+
+| Goal | Recommended entry point |
+|---|---|
+| Inspect real experimental evidence | [P110 magnetic + strain](case_studies/p110_magnetic_strain/README.md) or [406 MEM/remanence/ETP](case_studies/406_multimodal/README.md) |
+| Download the frozen real-data packages | [P110 v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) or [406 v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) |
+| Verify the software path quickly | [Deterministic structural demo](demo/README.md) and [CI workflow](.github/workflows/ci.yml) |
+| Register a new pull-test campaign | [Experiment template](configs/experiment_template.json) and [acquisition metadata SOP](docs/工业采集元数据SOP.md) |
+| Reproduce, question or extend a result | [Open a structured issue](https://github.com/dctthree/pipe-stress-data-platform/issues/new/choose) or join [Discussions](https://github.com/dctthree/pipe-stress-data-platform/discussions) |
+| Share the project without overstating its evidence | [Bilingual project share kit](docs/SHARE_KIT.md) |
+
+> **Reuse status:** the repository is public, but no open-source licence has yet been granted. Until code and data licences are added, cite and link to the repository but do not assume redistribution or commercial-use rights; see [NOTICE](NOTICE.md).
 
 ## Two real-data case studies
 

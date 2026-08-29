@@ -1,5 +1,7 @@
 # Contributing
 
+Independent reproduction, including a failed or different result, is the most valuable contribution at the current stage. Use the structured **Reproduction report** issue and identify the release tag, asset checksum/fingerprint, environment and exact command. For open-ended interpretation or hardware discussions, use GitHub Discussions.
+
 1. Never commit raw customer or field data, local absolute paths, credentials or blind labels.
 2. Add a manifest/config fixture and a regression test for every new sensor adapter.
 3. Bump the relevant standardizer/feature version when output semantics change.
@@ -7,4 +9,3 @@
 5. Keep label-dependent ROI selection outside blind inference code.
 6. Split model evaluation by pipe and physical run, never by rows or windows.
 7. A pull request that changes schema, QC gates or feature formulas must document migration and backward compatibility.
-

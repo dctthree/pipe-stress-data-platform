@@ -1,0 +1,56 @@
+name: Reproduction report
+description: Report an independent reproduction, including failures and cross-platform differences.
+title: "[Reproduction]: "
+labels:
+  - reproduction
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for testing a frozen case study. A failed or different result is as useful as a matching result. Do not include private paths, credentials, proprietary geometry or undisclosed blind labels.
+  - type: dropdown
+    id: case
+    attributes:
+      label: Case study
+      options:
+        - P110 magnetic + strain (v0.2.0)
+        - 406 MEM/remanence/ETP (v0.3.0)
+        - Structural demo only
+        - New local experiment
+    validations:
+      required: true
+  - type: input
+    id: release
+    attributes:
+      label: Release tag and asset name
+      placeholder: v0.3.0 / asset filename
+    validations:
+      required: true
+  - type: input
+    id: checksum
+    attributes:
+      label: Verified checksum or dataset fingerprint
+      description: Do not upload raw data; provide the published checksum or fingerprint.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python or MATLAB version, package version and command used.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Observed result
+      description: State what matched, differed or failed and attach compact logs/figures if safe.
+    validations:
+      required: true
+  - type: checkboxes
+    id: disclosure
+    attributes:
+      label: Disclosure check
+      options:
+        - label: I confirm that this issue contains no private raw data, credentials, proprietary geometry or undisclosed blind labels.
+          required: true

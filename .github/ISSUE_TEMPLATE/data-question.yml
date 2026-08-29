@@ -1,0 +1,40 @@
+name: Data or experiment question
+description: Ask about a data field, stage, sensor layout, QC flag or experiment boundary.
+title: "[Data]: "
+labels:
+  - data-question
+body:
+  - type: dropdown
+    id: campaign
+    attributes:
+      label: Campaign
+      options:
+        - P110 EXP2 magnetic + strain
+        - 406 calibration
+        - 406 blind repeats
+        - Platform schema or data contract
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: File, table or documentation link
+      placeholder: case_studies/.../README.md or release index entry
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Explain the ambiguity and the interpretation you are considering.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checked
+    attributes:
+      label: Checks
+      options:
+        - label: I checked the case-study README, dataset card and release index first.
+          required: true
+        - label: I will not attach unpublished raw data or blind labels.
+          required: true

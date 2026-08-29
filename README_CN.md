@@ -1,10 +1,30 @@
-# 管道应力多传感工业数据平台
+# 管道应力磁感知实验基准与数据平台
+
+[![持续集成](https://github.com/dctthree/pipe-stress-data-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/dctthree/pipe-stress-data-platform/actions/workflows/ci.yml)
+[![最新真实数据版本](https://img.shields.io/github/v/release/dctthree/pipe-stress-data-platform?label=%E7%9C%9F%E5%AE%9E%E6%95%B0%E6%8D%AE%E7%89%88%E6%9C%AC)](https://github.com/dctthree/pipe-stress-data-platform/releases/latest)
+[![Python](https://img.shields.io/badge/Python-%E2%89%A53.10-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![MATLAB](https://img.shields.io/badge/MATLAB-R2024b-E16737)](matlab/loadStressDataset.m)
+
+**真实牵拉数据 · Python/MATLAB 可复现流程 · 明确限定结论边界**
 
 [English](README.md) · [P110 磁传感+应变案例](case_studies/p110_magnetic_strain/README.md) · [406 三模态案例](case_studies/406_multimodal/README.md) · [演示数据](demo/README.md) · [AI 数据契约](docs/AI_DATA_CONTRACT.md) · [采集 SOP](docs/工业采集元数据SOP.md)
 
 本项目把磁传感、剩磁、涡流 ETP 和应变片牵拉实验整理成可追溯、可增量、可供 MATLAB、Python 和 AI 共用的数据链：原始文件不可变存档，标准信号、质控、特征和标签分别版本化。
 
 > 当前定位是科研与工程基础设施。只有冻结模型通过独立新管道盲测后，系统才允许开放定量 MPa 输出。
+
+## 从这里开始
+
+| 你的目标 | 推荐入口 |
+|---|---|
+| 查看真实实验和结果证据 | [P110 磁传感+应变](case_studies/p110_magnetic_strain/README.md)或[406 MEM/剩磁/ETP](case_studies/406_multimodal/README.md) |
+| 下载冻结的真实数据包 | [P110 v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0)或[406 v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) |
+| 快速验证软件链路 | [确定性结构 Demo](demo/README.md)和[持续集成流程](.github/workflows/ci.yml) |
+| 接入一轮新的牵拉实验 | [实验配置模板](configs/experiment_template.json)和[工业采集元数据 SOP](docs/工业采集元数据SOP.md) |
+| 反馈复现结果、数据疑问或新方法 | [按模板提交 Issue](https://github.com/dctthree/pipe-stress-data-platform/issues/new/choose)或进入[讨论区](https://github.com/dctthree/pipe-stress-data-platform/discussions) |
+| 对外转发且不夸大结论 | [中英文项目推广素材](docs/SHARE_KIT.md) |
+
+> **复用状态：**仓库已经公开，但目前尚未授予开源许可证。在代码许可证和数据许可证正式加入前，可以引用和链接本仓库，但不能默认获得再分发或商业使用权；详见[权利声明](NOTICE.md)。
 
 ## 两个同级真实数据项目
 
