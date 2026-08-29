@@ -6,6 +6,7 @@
 [![MATLAB](https://img.shields.io/badge/MATLAB-R2024b-E16737)](matlab/loadStressDataset.m)
 [![Code licence](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
 [![Data licence](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](DATA_LICENSE.md)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22162166.svg)](https://doi.org/10.5281/zenodo.22162166)
 
 **Real pull-test data · Reproducible Python/MATLAB workflows · Explicit claim limits**
 
@@ -196,7 +197,9 @@ d = loadStressDataset('lake/dataset_index.json');
 
 ## Citation and licences
 
-The project author/creator is **Bin Gao, University of Electronic Science and Technology of China (UESTC)**. GitHub's **Cite this repository** panel reads [CITATION.cff](CITATION.cff); Zenodo-ready metadata is provided in [.zenodo.json](.zenodo.json).
+The project author/creator is **Bin Gao, University of Electronic Science and Technology of China (UESTC)**. GitHub's **Cite this repository** panel reads [CITATION.cff](CITATION.cff). Use the [concept DOI 10.5281/zenodo.22162166](https://doi.org/10.5281/zenodo.22162166) for the evolving project or the [version DOI 10.5281/zenodo.22162167](https://doi.org/10.5281/zenodo.22162167) for the archived `v0.4.1` software snapshot.
+
+> The Zenodo `v0.4.1` record archives the GitHub source snapshot. The large frozen raw-data packages remain attached to the separate GitHub [P110 `v0.2.0`](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) and [406 `v0.3.0`](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) releases; they are not bundled into this software DOI.
 
 - Software code: [Apache License 2.0](LICENSE)
 - Experimental data, tables, figures, photographs and data-oriented documentation: [CC BY 4.0](DATA_LICENSE.md)

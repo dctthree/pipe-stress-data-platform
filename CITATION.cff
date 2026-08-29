@@ -15,6 +15,7 @@ abstract: >-
   stress-assessment claim limits.
 version: 0.4.1
 date-released: 2026-08-29
+doi: 10.5281/zenodo.22162167
 repository-code: https://github.com/dctthree/pipe-stress-data-platform
 url: https://github.com/dctthree/pipe-stress-data-platform
 license: Apache-2.0

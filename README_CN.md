@@ -6,6 +6,7 @@
 [![MATLAB](https://img.shields.io/badge/MATLAB-R2024b-E16737)](matlab/loadStressDataset.m)
 [![代码许可证](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
 [![数据许可证](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](DATA_LICENSE.md)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22162166.svg)](https://doi.org/10.5281/zenodo.22162166)
 
 **真实牵拉数据 · Python/MATLAB 可复现流程 · 明确限定结论边界**
 
@@ -195,7 +196,9 @@ d = loadStressDataset('lake/dataset_index.json');
 
 ## 引用与许可证
 
-项目作者为 **Bin Gao，电子科技大学（UESTC）**。GitHub 的“Cite this repository”入口读取 [CITATION.cff](CITATION.cff)，供 Zenodo 使用的元数据见 [.zenodo.json](.zenodo.json)。
+项目作者为 **Bin Gao，电子科技大学（UESTC）**。GitHub 的“Cite this repository”入口读取 [CITATION.cff](CITATION.cff)。持续更新的项目建议引用[概念 DOI：10.5281/zenodo.22162166](https://doi.org/10.5281/zenodo.22162166)；如需精确引用 `v0.4.1` 软件快照，请使用[版本 DOI：10.5281/zenodo.22162167](https://doi.org/10.5281/zenodo.22162167)。
+
+> Zenodo `v0.4.1` 记录归档的是 GitHub 源码快照。P110 与 406 的大型冻结原始数据包仍分别存放在 GitHub [P110 `v0.2.0`](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) 和 [406 `v0.3.0`](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) Release 中，未打包进本次软件 DOI。
 
 - 软件代码：[Apache License 2.0](LICENSE)
 - 实验数据、表格、结果图、照片和数据说明：[CC BY 4.0](DATA_LICENSE.md)
