@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dctthree.github.io/pipe-stress-data-platform/sitemap.xml

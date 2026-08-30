@@ -14,7 +14,7 @@
 
 ![Pipe Stress Sensing Benchmark — real P110 and 406-mm experiments](docs/social-preview.png)
 
-[中文说明](README_CN.md) · [P110 magnetic + strain case](case_studies/p110_magnetic_strain/README.md) · [406 multimodal case](case_studies/406_multimodal/README.md) · [Related publications](docs/RELATED_PUBLICATIONS.md) · [PIGPROX product materials](docs/product_materials/README.md) · [Demo](demo/README.md) · [AI data contract](docs/AI_DATA_CONTRACT.md) · [Acquisition SOP](docs/工业采集元数据SOP.md)
+[Project website](https://dctthree.github.io/pipe-stress-data-platform/) · [中文说明](README_CN.md) · [P110 magnetic + strain case](case_studies/p110_magnetic_strain/README.md) · [406 multimodal case](case_studies/406_multimodal/README.md) · [Related publications](docs/RELATED_PUBLICATIONS.md) · [PIGPROX product materials](docs/product_materials/README.md) · [Demo](demo/README.md) · [AI data contract](docs/AI_DATA_CONTRACT.md) · [Acquisition SOP](docs/工业采集元数据SOP.md)
 
 A traceable data pipeline for magnetic, remanence, eddy-current and strain-gauge pull-test data used in pipeline-stress research. It turns scattered CSV/XLSX/native acquisition files into immutable assets, typed tables, quality-control records, versioned features and leakage-safe AI inputs.
 
@@ -24,6 +24,7 @@ A traceable data pipeline for magnetic, remanence, eddy-current and strain-gauge
 
 | Goal | Recommended entry point |
 |---|---|
+| Open the concise public project page | [Bilingual GitHub Pages overview](https://dctthree.github.io/pipe-stress-data-platform/) |
 | Inspect real experimental evidence | [P110 magnetic + strain](case_studies/p110_magnetic_strain/README.md) or [406 MEM/remanence/ETP](case_studies/406_multimodal/README.md) |
 | Download the frozen real-data packages | [P110 Zenodo dataset](https://doi.org/10.5281/zenodo.22167582) or [406 Zenodo dataset](https://doi.org/10.5281/zenodo.22167685); GitHub mirrors remain at [v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) and [v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) |
 | Verify the software path quickly | [Deterministic structural demo](demo/README.md) and [CI workflow](.github/workflows/ci.yml) |

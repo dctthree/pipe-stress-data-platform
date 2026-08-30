@@ -8,6 +8,8 @@ This page provides approved, evidence-bounded copy and real visual assets for sh
 
 https://github.com/dctthree/pipe-stress-data-platform
 
+Concise project website / 精简展示网站：https://dctthree.github.io/pipe-stress-data-platform/
+
 - Software DOI: https://doi.org/10.5281/zenodo.22162166
 - P110 dataset DOI: https://doi.org/10.5281/zenodo.22167582
 - 406 dataset DOI: https://doi.org/10.5281/zenodo.22167685

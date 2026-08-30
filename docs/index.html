@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pipeline Stress Sensing | Real P110 &amp; 406-mm Pull-Test Data</title>
+  <meta name="description" content="Public real-data benchmark for P110 and 406-mm pipeline pull tests with magnetic, remanence, eddy-current and strain-gauge measurements, plus reproducible Python and MATLAB workflows.">
+  <meta name="keywords" content="pipeline stress sensing, pipeline inspection, electromagnetic NDT, P110 casing, eddy current, MEM, remanence, strain gauge, four-point bending, open data">
+  <meta name="author" content="Bin Gao, University of Electronic Science and Technology of China (UESTC)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://dctthree.github.io/pipe-stress-data-platform/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pipeline Stress Sensing Benchmark &amp; Data Platform">
+  <meta property="og:description" content="Real P110 and 406-mm pull-test datasets, traceable processing and explicit engineering claim limits.">
+  <meta property="og:url" content="https://dctthree.github.io/pipe-stress-data-platform/">
+  <meta property="og:image" content="https://dctthree.github.io/pipe-stress-data-platform/social-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pipeline Stress Sensing Benchmark &amp; Data Platform">
+  <meta name="twitter:description" content="Real P110 and 406-mm pull-test data with reproducible Python/MATLAB workflows.">
+  <meta name="twitter:image" content="https://dctthree.github.io/pipe-stress-data-platform/social-preview.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "Pipe Stress Sensing Benchmark & Data Platform",
+        "author": {"@type": "Person", "name": "Bin Gao", "affiliation": "University of Electronic Science and Technology of China (UESTC)"},
+        "codeRepository": "https://github.com/dctthree/pipe-stress-data-platform",
+        "url": "https://doi.org/10.5281/zenodo.22162166",
+        "programmingLanguage": ["Python", "MATLAB"],
+        "license": "https://www.apache.org/licenses/LICENSE-2.0"
+      },
+      {
+        "@type": "Dataset",
+        "name": "P110 EXP2 Magnetic and Strain-Gauge Four-Point-Bending Pull-Test Dataset",
+        "identifier": "https://doi.org/10.5281/zenodo.22167582",
+        "creator": {"@type": "Person", "name": "Bin Gao", "affiliation": "UESTC"},
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      {
+        "@type": "Dataset",
+        "name": "406-mm Pipe MEM, Remanence, Eddy-Current and Strain-Gauge Pull-Test Dataset",
+        "identifier": "https://doi.org/10.5281/zenodo.22167685",
+        "creator": {"@type": "Person", "name": "Bin Gao", "affiliation": "UESTC"},
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --ink: #12202d;
+      --muted: #5e6c78;
+      --line: #dce4e9;
+      --paper: #ffffff;
+      --soft: #f4f7f8;
+      --teal: #087f73;
+      --teal-dark: #075e57;
+      --orange: #ed5b19;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Inter, "Segoe UI", "Microsoft YaHei", system-ui, sans-serif; line-height: 1.62; }
+    a { color: var(--teal-dark); }
+    a:hover { color: var(--orange); }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    header { border-bottom: 1px solid var(--line); background: rgba(255,255,255,.96); position: sticky; top: 0; z-index: 20; }
+    nav { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 750; letter-spacing: -.02em; color: var(--ink); text-decoration: none; }
+    .brand span { color: var(--orange); }
+    .navlinks { display: flex; gap: 22px; font-size: .92rem; }
+    .navlinks a { color: var(--muted); text-decoration: none; }
+    .hero { padding: 74px 0 56px; background: linear-gradient(135deg, #f8fbfb 0%, #fff 55%, #fff7f2 100%); }
+    .eyebrow { color: var(--teal); font-size: .84rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 750; }
+    h1 { font-size: clamp(2.35rem, 5vw, 4.6rem); line-height: 1.06; max-width: 970px; margin: 16px 0 22px; letter-spacing: -.045em; }
+    .lead { max-width: 820px; color: var(--muted); font-size: 1.16rem; }
+    .cn { color: #33434e; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 7px; text-decoration: none; font-weight: 700; border: 1px solid var(--teal); }
+    .primary { color: white; background: var(--teal); }
+    .primary:hover { color: white; background: var(--teal-dark); }
+    .secondary { color: var(--teal-dark); background: white; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 48px; border: 1px solid var(--line); background: var(--line); }
+    .stat { padding: 20px; background: white; }
+    .stat strong { display: block; font-size: 1.45rem; }
+    .stat span { color: var(--muted); font-size: .88rem; }
+    section { padding: 64px 0; }
+    section.alt { background: var(--soft); }
+    h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin: 0 0 10px; letter-spacing: -.025em; }
+    .section-intro { max-width: 800px; color: var(--muted); margin: 0 0 30px; }
+    .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .card { background: white; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    .card img { width: 100%; height: 280px; object-fit: cover; display: block; }
+    .cardbody { padding: 24px; }
+    .tag { display: inline-block; padding: 3px 9px; border-radius: 99px; background: #e8f4f2; color: var(--teal-dark); font-size: .78rem; font-weight: 750; }
+    h3 { margin: 12px 0 8px; font-size: 1.35rem; }
+    .facts { padding-left: 1.1rem; color: #354550; }
+    .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; font-size: .93rem; font-weight: 700; }
+    .evidence { border-left: 4px solid var(--orange); background: #fff7f1; padding: 20px 22px; margin-top: 28px; }
+    .paper-list { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+    .paper-list li { padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .paper-list span { display: block; color: var(--muted); font-size: .9rem; }
+    .product-grid { display: grid; grid-template-columns: 1.4fr .6fr; gap: 24px; align-items: stretch; }
+    .product-grid .card img { height: 330px; object-fit: contain; background: white; padding: 10px; }
+    footer { padding: 40px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    @media (max-width: 780px) {
+      .navlinks { display: none; }
+      .hero { padding-top: 48px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .grid2, .product-grid { grid-template-columns: 1fr; }
+      .card img, .product-grid .card img { height: 230px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="#top">PIPE STRESS <span>DATA</span></a>
+      <div class="navlinks">
+        <a href="#datasets">Datasets / 数据</a>
+        <a href="#research">Research / 论文</a>
+        <a href="#hardware">Hardware / 产品</a>
+        <a href="https://github.com/dctthree/pipe-stress-data-platform">GitHub</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Real experiments · Traceable evidence · Open workflows</div>
+        <h1>Pipeline stress sensing from real pull-test data.</h1>
+        <p class="lead">Two citable experimental campaigns—P110 magnetic/strain and 406-mm MEM/remanence/eddy-current—organized with immutable data indexes, quality control, Python/MATLAB workflows and explicit claim limits.</p>
+        <p class="lead cn">两套可引用的真实管道四点弯牵拉实验，提供数据索引、质量控制、Python/MATLAB 程序与清晰的工程结论边界。</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/dctthree/pipe-stress-data-platform">Open repository / 进入仓库</a>
+          <a class="button secondary" href="https://github.com/dctthree/pipe-stress-data-platform/blob/main/README_CN.md">中文说明</a>
+          <a class="button secondary" href="https://github.com/dctthree/pipe-stress-data-platform/discussions/2">Project update</a>
+        </div>
+        <div class="stats" aria-label="Public project summary">
+          <div class="stat"><strong>2</strong><span>citable real datasets</span></div>
+          <div class="stat"><strong>3.48 GB</strong><span>public experimental assets</span></div>
+          <div class="stat"><strong>6</strong><span>related peer-reviewed papers</span></div>
+          <div class="stat"><strong>Python + MATLAB</strong><span>reproducible workflows</span></div>
+        </div>
+      </div>
+    </div>
+
+    <section id="datasets">
+      <div class="wrap">
+        <h2>Two experiments, two measurement contracts</h2>
+        <p class="section-intro">The projects are displayed at equal level but are never merged semantically. Each keeps its own sensors, calibration truth and claim boundary.</p>
+        <div class="grid2">
+          <article class="card">
+            <img src="results/field_photos/p110_field_test_overview.jpg" alt="Real P110 four-point-bending pull-test setup">
+            <div class="cardbody">
+              <span class="tag">P110 magnetic + strain</span>
+              <h3>P110 casing experiment</h3>
+              <ul class="facts">
+                <li>10.54 m casing, 139.70 mm outside diameter, 9.17 mm wall.</li>
+                <li>Three-axis magnetic output and matched strain-gauge references.</li>
+                <li>No independent remanence stream and no ETP modality.</li>
+              </ul>
+              <div class="links">
+                <a href="https://doi.org/10.5281/zenodo.22167582">Dataset DOI</a>
+                <a href="https://github.com/dctthree/pipe-stress-data-platform/tree/main/case_studies/p110_magnetic_strain">Case study</a>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="results/field_photos/406/406_inline_inspection_tool_setup.jpg" alt="Real 406-mm pipe and in-line inspection tool setup">
+            <div class="cardbody">
+              <span class="tag">406 MEM + remanence + ETP</span>
+              <h3>406-mm multimodal experiment</h3>
+              <ul class="facts">
+                <li>Four-point-bending calibration plus repeated blind pull cycles.</li>
+                <li>Shared MEM/remanence magnetic array and independent complex ETP.</li>
+                <li>Strain-gauge reference in calibration; no blind-cycle MPa truth.</li>
+              </ul>
+              <div class="links">
+                <a href="https://doi.org/10.5281/zenodo.22167685">Dataset DOI</a>
+                <a href="https://github.com/dctthree/pipe-stress-data-platform/tree/main/case_studies/406_multimodal">Case study</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="evidence"><strong>Engineering boundary.</strong> Current evidence supports controlled same-pipe relative-change and repeatability research. Direct transferable MPa output remains disabled until frozen calibration, uncertainty analysis and independent-pipe blind validation are completed.</div>
+      </div>
+    </section>
+
+    <section id="research" class="alt">
+      <div class="wrap">
+        <h2>Related electromagnetic inspection research</h2>
+        <p class="section-intro">Six DOI-verified publications establish the surrounding research lineage. They provide technical context; they are not automatically treated as validation of the two stress datasets.</p>
+        <ol class="paper-list">
+          <li><a href="https://doi.org/10.1109/TII.2025.3648328">Compact LC-Driven Electromagnetic Sensing and Inverse Gaussian Informatics for High-Resolution Industrial Pipeline Inspection</a><span>IEEE Transactions on Industrial Informatics, 2026</span></li>
+          <li><a href="https://doi.org/10.1109/TII.2025.3588620">Physical and Digital Dual-Driven AI Framework for Enhanced Electromagnetic Perception of Nondestructive Testing Tomography</a><span>IEEE Transactions on Industrial Informatics, 2025</span></li>
+          <li><a href="https://doi.org/10.1109/TIM.2025.3555696">Physical Coupling Fusion of Electromagnetic Acoustic Guided Wave With “Near-Zero” Magnetic Sensing System</a><span>IEEE Transactions on Instrumentation and Measurement, 2025</span></li>
+          <li><a href="https://doi.org/10.1016/j.ndteint.2024.103307">Pipeline Integrity Gauges Based on Dynamic Magnetic Coupling Sensing Technology</a><span>NDT &amp; E International, 2025</span></li>
+          <li><a href="https://doi.org/10.1109/TII.2022.3217754">Multilayer Feature Boosting Framework for Pipeline Inspection Using an Intelligent Pig System</a><span>IEEE Transactions on Industrial Informatics, 2023</span></li>
+          <li><a href="https://doi.org/10.1109/JSEN.2022.3201093">Electromagnetic Pigging System Based on Sandwich Differential Planar Coil</a><span>IEEE Sensors Journal, 2022</span></li>
+        </ol>
+        <div class="links">
+          <a href="https://github.com/dctthree/pipe-stress-data-platform/blob/main/docs/RELATED_PUBLICATIONS.md">Full citations and relevance notes</a>
+          <a href="https://github.com/dctthree/pipe-stress-data-platform/blob/main/docs/related_publications.bib">Download BibTeX</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="hardware">
+      <div class="wrap">
+        <h2>Inspection hardware and product materials</h2>
+        <p class="section-intro">Owner-supplied collateral gives an immediate view of the electromagnetic ILI hardware. Manufacturer specifications remain separate from experimental evidence.</p>
+        <div class="product-grid">
+          <article class="card">
+            <img src="product_materials/PIGPROX_eddy_current_ILI_brochure_preview.png" alt="PIGPROX English eddy-current in-line-inspection brochure">
+            <div class="cardbody">
+              <span class="tag">Eddy-current ILI</span>
+              <h3>PIGPROX English brochure</h3>
+              <p>Original 12-page product brochure covering compact eddy-current inspection tools, tracking, technical indexes and application cases.</p>
+              <div class="links"><a href="https://github.com/dctthree/pipe-stress-data-platform/releases/download/product-materials-2026-08/PIGPROX-English-Eddy-Current-ILI-Brochure.pdf">Download original PDF · 52.6 MB</a></div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="product_materials/PIGPROX_MEM_ultralight_MFL_detector.jpg" alt="PIGPROX MEM ultralight magnetic flux leakage detector poster">
+            <div class="cardbody">
+              <span class="tag">MEM magnetic ILI</span>
+              <h3>Ultralight MFL detector</h3>
+              <p>Full-resolution product poster and compact detector configuration.</p>
+              <div class="links"><a href="product_materials/PIGPROX_MEM_ultralight_MFL_detector.jpg">Open poster</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <strong>Bin Gao · University of Electronic Science and Technology of China (UESTC)</strong><br>
+      Code: Apache-2.0 · Experimental data/evidence media: CC BY 4.0 · Product collateral: separate rights notice.<br>
+      Software DOI: <a href="https://doi.org/10.5281/zenodo.22162166">10.5281/zenodo.22162166</a>
+    </div>
+  </footer>
+</body>
+</html>

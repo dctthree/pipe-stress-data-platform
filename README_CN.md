@@ -14,7 +14,7 @@
 
 ![管道应力磁感知实验基准——真实P110与406毫米管道实验](docs/social-preview.png)
 
-[English](README.md) · [P110 磁传感+应变案例](case_studies/p110_magnetic_strain/README.md) · [406 三模态案例](case_studies/406_multimodal/README.md) · [相关论文](docs/RELATED_PUBLICATIONS.md) · [PIGPROX 产品资料](docs/product_materials/README.md) · [演示数据](demo/README.md) · [AI 数据契约](docs/AI_DATA_CONTRACT.md) · [采集 SOP](docs/工业采集元数据SOP.md)
+[项目展示网站](https://dctthree.github.io/pipe-stress-data-platform/) · [English](README.md) · [P110 磁传感+应变案例](case_studies/p110_magnetic_strain/README.md) · [406 三模态案例](case_studies/406_multimodal/README.md) · [相关论文](docs/RELATED_PUBLICATIONS.md) · [PIGPROX 产品资料](docs/product_materials/README.md) · [演示数据](demo/README.md) · [AI 数据契约](docs/AI_DATA_CONTRACT.md) · [采集 SOP](docs/工业采集元数据SOP.md)
 
 本项目把磁传感、剩磁、涡流 ETP 和应变片牵拉实验整理成可追溯、可增量、可供 MATLAB、Python 和 AI 共用的数据链：原始文件不可变存档，标准信号、质控、特征和标签分别版本化。
 
@@ -24,6 +24,7 @@
 
 | 你的目标 | 推荐入口 |
 |---|---|
+| 打开精简的项目展示页 | [双语 GitHub Pages 网站](https://dctthree.github.io/pipe-stress-data-platform/) |
 | 查看真实实验和结果证据 | [P110 磁传感+应变](case_studies/p110_magnetic_strain/README.md)或[406 MEM/剩磁/ETP](case_studies/406_multimodal/README.md) |
 | 下载冻结的真实数据包 | [P110 Zenodo 数据集](https://doi.org/10.5281/zenodo.22167582)或[406 Zenodo 数据集](https://doi.org/10.5281/zenodo.22167685)；GitHub 镜像保留在 [v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) 和 [v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) |
 | 快速验证软件链路 | [确定性结构 Demo](demo/README.md)和[持续集成流程](.github/workflows/ci.yml) |
