@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: >-
-  If you use this software, experimental data, figures or workflows, please
-  cite the repository and the specific frozen release used.
+  Cite the software DOI when using code or workflows, the corresponding
+  dataset DOI when using experimental data, and both when both are used.
 title: Pipe Stress Sensing Benchmark & Data Platform
 type: software
 authors:
@@ -28,3 +28,26 @@ keywords:
   - strain gauge
   - four-point bending
   - reproducible research
+references:
+  - type: dataset
+    title: P110 EXP2 Magnetic and Strain-Gauge Four-Point-Bending Pull-Test Dataset
+    authors:
+      - family-names: Gao
+        given-names: Bin
+        affiliation: University of Electronic Science and Technology of China (UESTC)
+    version: "1.0.0+97b0dca62768"
+    date-released: 2026-08-25
+    doi: 10.5281/zenodo.22167582
+    url: https://doi.org/10.5281/zenodo.22167582
+    license: CC-BY-4.0
+  - type: dataset
+    title: 406-mm Pipe MEM, Remanence, Eddy-Current and Strain-Gauge Pull-Test Dataset
+    authors:
+      - family-names: Gao
+        given-names: Bin
+        affiliation: University of Electronic Science and Technology of China (UESTC)
+    version: "0.3.0"
+    date-released: 2026-08-25
+    doi: 10.5281/zenodo.22167685
+    url: https://doi.org/10.5281/zenodo.22167685
+    license: CC-BY-4.0

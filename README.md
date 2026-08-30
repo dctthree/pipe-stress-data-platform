@@ -6,13 +6,15 @@
 [![MATLAB](https://img.shields.io/badge/MATLAB-R2024b-E16737)](matlab/loadStressDataset.m)
 [![Code licence](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
 [![Data licence](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](DATA_LICENSE.md)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22162166.svg)](https://doi.org/10.5281/zenodo.22162166)
+[![Software DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22162166.svg)](https://doi.org/10.5281/zenodo.22162166)
+[![P110 data DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22167582.svg)](https://doi.org/10.5281/zenodo.22167582)
+[![406 data DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22167685.svg)](https://doi.org/10.5281/zenodo.22167685)
 
 **Real pull-test data · Reproducible Python/MATLAB workflows · Explicit claim limits**
 
 ![Pipe Stress Sensing Benchmark — real P110 and 406-mm experiments](docs/social-preview.png)
 
-[中文说明](README_CN.md) · [P110 magnetic + strain case](case_studies/p110_magnetic_strain/README.md) · [406 multimodal case](case_studies/406_multimodal/README.md) · [Demo](demo/README.md) · [AI data contract](docs/AI_DATA_CONTRACT.md) · [Acquisition SOP](docs/工业采集元数据SOP.md)
+[中文说明](README_CN.md) · [P110 magnetic + strain case](case_studies/p110_magnetic_strain/README.md) · [406 multimodal case](case_studies/406_multimodal/README.md) · [Related publications](docs/RELATED_PUBLICATIONS.md) · [PIGPROX product materials](docs/product_materials/README.md) · [Demo](demo/README.md) · [AI data contract](docs/AI_DATA_CONTRACT.md) · [Acquisition SOP](docs/工业采集元数据SOP.md)
 
 A traceable data pipeline for magnetic, remanence, eddy-current and strain-gauge pull-test data used in pipeline-stress research. It turns scattered CSV/XLSX/native acquisition files into immutable assets, typed tables, quality-control records, versioned features and leakage-safe AI inputs.
 
@@ -23,10 +25,12 @@ A traceable data pipeline for magnetic, remanence, eddy-current and strain-gauge
 | Goal | Recommended entry point |
 |---|---|
 | Inspect real experimental evidence | [P110 magnetic + strain](case_studies/p110_magnetic_strain/README.md) or [406 MEM/remanence/ETP](case_studies/406_multimodal/README.md) |
-| Download the frozen real-data packages | [P110 v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) or [406 v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) |
+| Download the frozen real-data packages | [P110 Zenodo dataset](https://doi.org/10.5281/zenodo.22167582) or [406 Zenodo dataset](https://doi.org/10.5281/zenodo.22167685); GitHub mirrors remain at [v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) and [v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) |
 | Verify the software path quickly | [Deterministic structural demo](demo/README.md) and [CI workflow](.github/workflows/ci.yml) |
 | Register a new pull-test campaign | [Experiment template](configs/experiment_template.json) and [acquisition metadata SOP](docs/工业采集元数据SOP.md) |
 | Reproduce, question or extend a result | [Open a structured issue](https://github.com/dctthree/pipe-stress-data-platform/issues/new/choose) or join [Discussions](https://github.com/dctthree/pipe-stress-data-platform/discussions) |
+| Follow the electromagnetic-ILI research lineage | [Six related peer-reviewed publications with DOI links and BibTeX](docs/RELATED_PUBLICATIONS.md) |
+| View the inspection hardware and product collateral | [PIGPROX eddy-current brochure and MEM detector poster](docs/product_materials/README.md) |
 | Share the project without overstating its evidence | [Bilingual project share kit](docs/SHARE_KIT.md) |
 
 > **Reuse status:** software is open source under [Apache-2.0](LICENSE). Experimental data, public tables, result figures and field-test photographs are available under [CC BY 4.0](DATA_LICENSE.md) unless stated otherwise. Cite the exact frozen release used.
@@ -40,9 +44,18 @@ A traceable data pipeline for magnetic, remanence, eddy-current and strain-gauge
 | **Sensors:** three-axis magnetic output in `Z/Y/X` order plus strain gauges. The reviewed result uses the complete bilateral MEM probe and preselected sensor IDs 1/3/4/5/6. No independent remanence stream and no ETP. | **Sensors:** 160 remanence and 160 MEM channels separated from one shared magnetic CSV, an independent 20-channel complex ETP stream in blind repeats, and strain gauges in calibration. |
 | [![Real P110 reviewed magnetic evidence](case_studies/p110_magnetic_strain/results/reviewed/real_p110_magnetic_case.png)](case_studies/p110_magnetic_strain/README.md) | [![Real 406 calibration evidence](case_studies/406_multimodal/results/calibration/07_physical_contrast_trends.png)](case_studies/406_multimodal/README.md) |
 | **Current evidence:** two reviewed P110 runs reproduce Q60–Q80 stress ordering, but their response scale differs; direct MPa remains disabled. | **Current evidence:** selected magnetic relative-change candidates survive the declared QC exclusions and same-pipe gates; ETP remains research/QC and no blind MPa is claimed. |
-| [Open P110 case](case_studies/p110_magnetic_strain/README.md) · [Real data v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) · [Field photos](docs/results/field_photos/README.md) | [Open 406 case](case_studies/406_multimodal/README.md) · [Real data v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) · [Field photos](docs/results/field_photos/406/README.md) |
+| [Open P110 case](case_studies/p110_magnetic_strain/README.md) · [Data DOI](https://doi.org/10.5281/zenodo.22167582) · [GitHub mirror](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) · [Field photos](docs/results/field_photos/README.md) | [Open 406 case](case_studies/406_multimodal/README.md) · [Data DOI](https://doi.org/10.5281/zenodo.22167685) · [GitHub mirror](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) · [Field photos](docs/results/field_photos/406/README.md) |
 
 Both cards above use real experimental results, not the synthetic reader demo. The two experiments share the traceable platform but retain separate measurement contracts, configurations, evidence and claim limits.
+
+## Research lineage and inspection hardware
+
+| Peer-reviewed research | Product presentation |
+|---|---|
+| The [related-publications index](docs/RELATED_PUBLICATIONS.md) links six papers on compact LC-driven sensing, physics/digital AI, near-zero magnetic sensing, dynamic magnetic coupling, multisensor feature boosting and differential planar-coil eddy-current inspection. DOI links and [BibTeX](docs/related_publications.bib) are included. | The [PIGPROX materials page](docs/product_materials/README.md) provides the original 12-page English eddy-current ILI brochure and the full-resolution MEM ultralight MFL detector poster. |
+| [Open publication index](docs/RELATED_PUBLICATIONS.md) | [![PIGPROX eddy-current ILI brochure](docs/product_materials/PIGPROX_eddy_current_ILI_brochure_preview.png)](docs/product_materials/README.md) |
+
+These are context layers, not extra measurements. The papers remain subject to publisher copyright, and manufacturer specifications in the product collateral are not converted into P110/406 experimental claims.
 
 ## Experimental scope
 
@@ -147,12 +160,14 @@ Included capabilities:
 
 ## Public data releases
 
-Raw experimental files are excluded from Git history and published as immutable Release assets.
+Raw experimental files are excluded from Git history. Each frozen dataset has a citable Zenodo archive and a byte-identical GitHub Release mirror.
 
-| Release | Contents | Entry point |
-|---|---|---|
-| [v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) | Full P110 EXP2 magnetic + strain package | `dataset_index.json` inside `P110_EXP2_full_release_1.0.0+97b0dca62768.zip` |
-| [v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) | 406 calibration MEM/remanence + strain, and 17-packet blind MEM/remanence/ETP data | `release_index.json`, `raw_file_manifest.csv` and `SHA256SUMS.txt` |
+| Dataset | Citable Zenodo archive | GitHub mirror | Contents | Entry point |
+|---|---|---|---|---|
+| P110 EXP2 | [10.5281/zenodo.22167582](https://doi.org/10.5281/zenodo.22167582) | [v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) | Three-axis magnetic + strain | `dataset_index.json` inside `P110_EXP2_full_release_1.0.0+97b0dca62768.zip` |
+| 406 | [10.5281/zenodo.22167685](https://doi.org/10.5281/zenodo.22167685) | [v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) | Calibration MEM/remanence/strain + blind MEM/remanence/ETP | `release_index.json`, `raw_file_manifest.csv` and `SHA256SUMS.txt` |
+
+The canonical DOI map and modality boundaries are collected in [Data and software DOIs](docs/DATA_DOIS.md).
 
 Do not infer stages by scanning filenames. Start from the published index and preserve missing stages and QC failures exactly as recorded.
 
@@ -199,10 +214,10 @@ d = loadStressDataset('lake/dataset_index.json');
 
 The project author/creator is **Bin Gao, University of Electronic Science and Technology of China (UESTC)**. GitHub's **Cite this repository** panel reads [CITATION.cff](CITATION.cff). Use the [concept DOI 10.5281/zenodo.22162166](https://doi.org/10.5281/zenodo.22162166) for the evolving project or the [version DOI 10.5281/zenodo.22162167](https://doi.org/10.5281/zenodo.22162167) for the archived `v0.4.1` software snapshot.
 
-> The Zenodo `v0.4.1` record archives the GitHub source snapshot. The large frozen raw-data packages remain attached to the separate GitHub [P110 `v0.2.0`](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) and [406 `v0.3.0`](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) releases; they are not bundled into this software DOI.
+> The Zenodo `v0.4.1` record archives the software source snapshot only. The P110 and 406 raw data are archived as separate citable Zenodo dataset records and mirrored in GitHub Releases. Cite the software DOI for code/workflows and the corresponding dataset DOI for experimental data; cite both when both are used.
 
 - Software code: [Apache License 2.0](LICENSE)
 - Experimental data, tables, figures, photographs and data-oriented documentation: [CC BY 4.0](DATA_LICENSE.md)
 - Recommended attribution: `Gao, Bin (2026). Pipe Stress Sensing Benchmark & Data Platform. UESTC.` plus the repository URL, frozen release tag and checksum/fingerprint.
 
-Tracked in Git: code, schemas, templates, tests, compact derived tables, figures and documentation. Raw experimental files and large release archives stay in GitHub Releases; the same data licence and release-specific evidence limits apply.
+Tracked in Git: code, schemas, templates, tests, compact derived tables, figures and documentation. Raw experimental files and large release archives are stored in the independent Zenodo datasets and mirrored in GitHub Releases; the same data licence and release-specific evidence limits apply.

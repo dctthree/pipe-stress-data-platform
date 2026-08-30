@@ -12,6 +12,8 @@ Unless a file or release asset states otherwise, the following materials are lic
 
 Software source code, MATLAB/Python programs, schemas, configuration templates and CI workflows are licensed separately under the repository's [Apache License 2.0](LICENSE).
 
+The owner-supplied product brochure, product poster and their browser preview under [`docs/product_materials/`](docs/product_materials/README.md) are excluded from this CC BY 4.0 grant. Their separate provenance and rights notice applies.
+
 ## Required attribution
 
 When sharing or adapting covered data or media, provide attribution in a reasonable form, link to this repository and the CC BY 4.0 licence, identify the release or commit used, and indicate whether changes were made. Recommended wording:

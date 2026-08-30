@@ -1,8 +1,8 @@
 # 406 管道 MEM—剩磁—ETP 三模态案例 / 406-pipe MEM–remanence–ETP case study
 
-本目录公开 406 管道牵拉实验的可追溯 MATLAB 程序、冻结派生表和真实分析图。原始 CSV 体量较大，作为 [GitHub Release v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) 数据资产分发；普通 Git 目录保留代码、配置、QC 记录和可复核结果。
+本目录公开 406 管道牵拉实验的可追溯 MATLAB 程序、冻结派生表和真实分析图。原始数据归档在 [406 Zenodo 数据集](https://doi.org/10.5281/zenodo.22167685)，并以 [GitHub Release v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) 作为字节一致镜像；普通 Git 目录保留代码、配置、QC 记录和可复核结果。
 
-This directory publishes the traceable MATLAB workflow, frozen derived tables, and real analysis figures for the 406-pipe pull tests. The large raw CSV files are distributed as GitHub Release data assets; the normal Git tree keeps code, configuration, QC evidence, and reviewable results.
+This directory publishes the traceable MATLAB workflow, frozen derived tables, and real analysis figures for the 406-pipe pull tests. The raw-data packages are archived in the [406 Zenodo dataset](https://doi.org/10.5281/zenodo.22167685) and mirrored byte-for-byte in [GitHub Release v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0); the normal Git tree keeps code, configuration, QC evidence, and reviewable results.
 
 ## 现场实验与传感器 / Field experiment and sensors
 
@@ -113,9 +113,9 @@ The implemented fusion is fail-closed **modality/QC eligibility gating**: `MAG-F
 
 The ignored `runtime/` directory receives regenerated cache and outputs, so a run does not overwrite the frozen public snapshot.
 
-## 5. 从 Release 原始数据复现 / Reproduce from Release raw data
+## 5. 从归档原始数据复现 / Reproduce from archived raw data
 
-1. 下载 [406 multimodal v0.3.0 Release](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) 的 8 个原始数据 ZIP，并先按 `release/SHA256SUMS.txt` 校验；以 `release/release_index.json` 和 `release/raw_file_manifest.csv` 为阶段/QC真源。
+1. 从 [406 Zenodo 数据集](https://doi.org/10.5281/zenodo.22167685)（或字节一致的 [GitHub v0.3.0 镜像](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0)）下载 8 个原始数据 ZIP，并先按 `release/SHA256SUMS.txt` 校验；以 `release/release_index.json` 和 `release/raw_file_manifest.csv` 为阶段/QC真源。
 2. 将资产解压到本目录并保留路径，最终应得到：
 
    ```text

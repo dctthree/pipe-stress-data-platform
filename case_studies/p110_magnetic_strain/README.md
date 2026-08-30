@@ -1,6 +1,6 @@
 # P110 magnetic + strain case study / P110 磁传感与应变案例
 
-[Repository home](../../README.md) · [406 multimodal case](../406_multimodal/README.md) · [P110 v0.2.0 data release](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) · [Dataset card](release/DATASET_CARD.md)
+[Repository home](../../README.md) · [406 multimodal case](../406_multimodal/README.md) · [P110 dataset DOI: 10.5281/zenodo.22167582](https://doi.org/10.5281/zenodo.22167582) · [GitHub mirror v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) · [Dataset card](release/DATASET_CARD.md)
 
 This is the first-class P110 entry point. It collects the real evidence, corrected public configuration, Python/MATLAB redraw programs, immutable Release identity and fail-closed validation rules that were previously scattered across the repository.
 
@@ -84,7 +84,7 @@ run('case_studies/p110_magnetic_strain/matlab/run_p110_case.m')
 
 Generated files go to the ignored `runtime/` directory. The tracked real evidence remains immutable.
 
-For a full local rebuild after downloading and extracting the Release asset, copy [the corrected complete configuration](config/p110_exp2_release.example.json), replace only local paths/identifiers, and use the shared root pipeline:
+For a full local rebuild, download and verify the frozen package from the [P110 Zenodo dataset](https://doi.org/10.5281/zenodo.22167582) (or its byte-identical [GitHub mirror](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0)), extract it, copy [the corrected complete configuration](config/p110_exp2_release.example.json), replace only local paths/identifiers, and use the shared root pipeline:
 
 ```powershell
 python run_pipeline.py run --config path/to/p110_exp2.json --output lake --snapshot-mode blob

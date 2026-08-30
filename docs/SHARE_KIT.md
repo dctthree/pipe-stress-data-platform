@@ -8,6 +8,15 @@ This page provides approved, evidence-bounded copy and real visual assets for sh
 
 https://github.com/dctthree/pipe-stress-data-platform
 
+- Software DOI: https://doi.org/10.5281/zenodo.22162166
+- P110 dataset DOI: https://doi.org/10.5281/zenodo.22167582
+- 406 dataset DOI: https://doi.org/10.5281/zenodo.22167685
+
+See the canonical citation map in [Data and software DOIs](DATA_DOIS.md).
+
+- Related publications: [six DOI-linked electromagnetic and pipeline-ILI papers](RELATED_PUBLICATIONS.md)
+- Product presentation: [PIGPROX eddy-current ILI brochure and MEM detector poster](product_materials/README.md)
+
 ## One-line description / 一句话介绍
 
 **English**
@@ -30,9 +39,13 @@ We have released a public research repository for traceable pipeline-stress sens
 
 Repository: https://github.com/dctthree/pipe-stress-data-platform
 
-Code is licensed under Apache-2.0; experimental data and published media are licensed under CC BY 4.0. Author/creator: Bin Gao, UESTC.
+Research background and citation-ready BibTeX: https://github.com/dctthree/pipe-stress-data-platform/blob/main/docs/RELATED_PUBLICATIONS.md
 
-代码采用 Apache-2.0；实验数据与公开媒体采用 CC BY 4.0。作者/创建者：Bin Gao，UESTC。
+PIGPROX product materials: https://github.com/dctthree/pipe-stress-data-platform/tree/main/docs/product_materials
+
+Code is licensed under Apache-2.0; experimental data and project-owned evidence media are licensed under CC BY 4.0. Product collateral has a separate rights notice. Author/creator: Bin Gao, UESTC.
+
+代码采用 Apache-2.0；实验数据与项目自有证据图片采用 CC BY 4.0，产品宣传资料另有权利说明。作者/创建者：Bin Gao，UESTC。
 
 ## Compact post for X / short-form channels
 
@@ -60,6 +73,10 @@ We are looking for independent users in pipeline in-line inspection, electromagn
 | [406 bending setup](results/field_photos/406/406_four_point_bending_strain_setup.jpg) | Real four-point-bending and strain arrangement | Context photograph; not a numerical input |
 | [406 calibration relationships](../case_studies/406_multimodal/results/calibration/07_physical_contrast_trends.png) | Real calibration-run feature relationships | Development/calibration evidence, not independent validation |
 | [406 repeated blind pulls](results/real_406_repeatability.png) | Real repeated blind packets with QC exclusions retained | No contemporaneous blind MPa truth |
+| [PIGPROX eddy-current ILI brochure](product_materials/README.md) | Owner-supplied 12-page English product brochure | Product presentation; manufacturer claims are not experiment results |
+| [PIGPROX MEM detector poster](product_materials/PIGPROX_MEM_ultralight_MFL_detector.jpg) | Owner-supplied full-resolution product poster | Product presentation; separate from P110/406 evidence and licences |
+
+The six related electromagnetic and pipeline-inspection papers are listed with DOI links and BibTeX in the [publication index](RELATED_PUBLICATIONS.md). Link to the publisher/author record; do not upload publisher PDFs unless their licence expressly permits redistribution.
 
 Do not use images under `demo/results/` as experimental evidence. They are deterministic synthetic data for software-path testing.
 
@@ -78,9 +95,13 @@ Do not use images under `demo/results/` as experimental evidence. They are deter
 - Do not claim independent-pipe absolute-MPa validation.
 - Do not hide declared QC failures or the partial third 406 cycle.
 - When describing the project as open source, retain links to both the Apache-2.0 code licence and the CC BY 4.0 data/media licence.
+- Do not describe manufacturer-stated brochure specifications as independently validated P110/406 stress-performance results.
+- Do not imply that product collateral is covered by the code or experimental-data licences; its separate rights notice applies.
 
 - 不得声称 P110 含有独立剩磁或 ETP 模态。
 - 不得把合成 Demo 描述为真实实验。
 - 不得声称已经完成独立新管道绝对 MPa 验证。
 - 不得隐去已声明的 QC 失败和 406 第三个不完整周期。
 - 使用“开源项目”表述时，应同时保留 Apache-2.0 代码许可证和 CC BY 4.0 数据/媒体许可证链接。
+- 不得把产品画册中的厂商指标描述成经 P110/406 应力实验独立验证的性能结论。
+- 不得暗示产品宣传资料自动适用代码或实验数据许可证；应遵循其单独权利说明。

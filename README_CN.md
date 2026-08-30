@@ -6,13 +6,15 @@
 [![MATLAB](https://img.shields.io/badge/MATLAB-R2024b-E16737)](matlab/loadStressDataset.m)
 [![代码许可证](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
 [![数据许可证](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](DATA_LICENSE.md)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22162166.svg)](https://doi.org/10.5281/zenodo.22162166)
+[![软件 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22162166.svg)](https://doi.org/10.5281/zenodo.22162166)
+[![P110 数据 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22167582.svg)](https://doi.org/10.5281/zenodo.22167582)
+[![406 数据 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22167685.svg)](https://doi.org/10.5281/zenodo.22167685)
 
 **真实牵拉数据 · Python/MATLAB 可复现流程 · 明确限定结论边界**
 
 ![管道应力磁感知实验基准——真实P110与406毫米管道实验](docs/social-preview.png)
 
-[English](README.md) · [P110 磁传感+应变案例](case_studies/p110_magnetic_strain/README.md) · [406 三模态案例](case_studies/406_multimodal/README.md) · [演示数据](demo/README.md) · [AI 数据契约](docs/AI_DATA_CONTRACT.md) · [采集 SOP](docs/工业采集元数据SOP.md)
+[English](README.md) · [P110 磁传感+应变案例](case_studies/p110_magnetic_strain/README.md) · [406 三模态案例](case_studies/406_multimodal/README.md) · [相关论文](docs/RELATED_PUBLICATIONS.md) · [PIGPROX 产品资料](docs/product_materials/README.md) · [演示数据](demo/README.md) · [AI 数据契约](docs/AI_DATA_CONTRACT.md) · [采集 SOP](docs/工业采集元数据SOP.md)
 
 本项目把磁传感、剩磁、涡流 ETP 和应变片牵拉实验整理成可追溯、可增量、可供 MATLAB、Python 和 AI 共用的数据链：原始文件不可变存档，标准信号、质控、特征和标签分别版本化。
 
@@ -23,10 +25,12 @@
 | 你的目标 | 推荐入口 |
 |---|---|
 | 查看真实实验和结果证据 | [P110 磁传感+应变](case_studies/p110_magnetic_strain/README.md)或[406 MEM/剩磁/ETP](case_studies/406_multimodal/README.md) |
-| 下载冻结的真实数据包 | [P110 v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0)或[406 v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) |
+| 下载冻结的真实数据包 | [P110 Zenodo 数据集](https://doi.org/10.5281/zenodo.22167582)或[406 Zenodo 数据集](https://doi.org/10.5281/zenodo.22167685)；GitHub 镜像保留在 [v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) 和 [v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) |
 | 快速验证软件链路 | [确定性结构 Demo](demo/README.md)和[持续集成流程](.github/workflows/ci.yml) |
 | 接入一轮新的牵拉实验 | [实验配置模板](configs/experiment_template.json)和[工业采集元数据 SOP](docs/工业采集元数据SOP.md) |
 | 反馈复现结果、数据疑问或新方法 | [按模板提交 Issue](https://github.com/dctthree/pipe-stress-data-platform/issues/new/choose)或进入[讨论区](https://github.com/dctthree/pipe-stress-data-platform/discussions) |
+| 了解电磁内检测研究脉络 | [6 篇相关同行评议论文、DOI 与 BibTeX](docs/RELATED_PUBLICATIONS.md) |
+| 直观看检测硬件与产品资料 | [PIGPROX 涡流英文画册与 MEM 检测器海报](docs/product_materials/README.md) |
 | 对外转发且不夸大结论 | [中英文项目推广素材](docs/SHARE_KIT.md) |
 
 > **复用状态：**软件代码按 [Apache-2.0](LICENSE) 正式开源；实验数据、公开表格、结果图和现场照片除非另有说明，均按 [CC BY 4.0](DATA_LICENSE.md) 开放。使用时应引用具体冻结版本。
@@ -40,9 +44,18 @@
 | **传感器：**`Z/Y/X` 顺序的三轴磁传感与应变片；当前结果采用完整双磁极 MEM 探头及预选传感器 1/3/4/5/6。没有独立剩磁流，也没有 ETP。 | **传感器：**同一磁 CSV 中拆分的 160 个剩磁与 160 个 MEM 通道、盲测轮独立 20 通道复数 ETP，以及标定轮应变片。 |
 | [![P110真实磁信号审查结果](case_studies/p110_magnetic_strain/results/reviewed/real_p110_magnetic_case.png)](case_studies/p110_magnetic_strain/README.md) | [![406真实标定结果](case_studies/406_multimodal/results/calibration/07_physical_contrast_trends.png)](case_studies/406_multimodal/README.md) |
 | **当前证据：**P110 两轮 Q60–Q80 可以重复应力排序，但响应尺度不同，禁止直接输出 MPa。 | **当前证据：**部分磁相对变化候选在声明的 QC 排除后通过同管门限；ETP 仍是研究/QC，不声称盲测 MPa。 |
-| [进入 P110 项目](case_studies/p110_magnetic_strain/README.md) · [真实数据 v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) · [现场照片](docs/results/field_photos/README.md) | [进入 406 项目](case_studies/406_multimodal/README.md) · [真实数据 v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) · [现场照片](docs/results/field_photos/406/README.md) |
+| [进入 P110 项目](case_studies/p110_magnetic_strain/README.md) · [数据 DOI](https://doi.org/10.5281/zenodo.22167582) · [GitHub 镜像](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) · [现场照片](docs/results/field_photos/README.md) | [进入 406 项目](case_studies/406_multimodal/README.md) · [数据 DOI](https://doi.org/10.5281/zenodo.22167685) · [GitHub 镜像](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) · [现场照片](docs/results/field_photos/406/README.md) |
 
 上面两张卡片都使用真实实验结果，不是合成 Demo。两套实验共用可追溯平台，但各自保留独立的数据边界、配置、结果证据和结论限制。
+
+## 研究脉络与内检测硬件
+
+| 同行评议研究 | 产品展示 |
+|---|---|
+| [相关论文索引](docs/RELATED_PUBLICATIONS.md)收录 6 篇论文，覆盖紧凑 LC 电磁感知、物理—数字双驱动人工智能、近零磁场、动磁耦合、多传感特征增强和差分平面线圈涡流内检测，并提供 DOI 与 [BibTeX](docs/related_publications.bib)。 | [PIGPROX 产品资料页](docs/product_materials/README.md)提供 12 页英文涡流内检测画册原件和 MEM 超轻漏磁内检测器全分辨率海报。 |
+| [进入论文索引](docs/RELATED_PUBLICATIONS.md) | [![PIGPROX涡流内检测英文画册](docs/product_materials/PIGPROX_eddy_current_ILI_brochure_preview.png)](docs/product_materials/README.md) |
+
+论文和产品资料用于说明研究与工程背景，不是新增实验数据。论文遵循出版商版权；画册中的厂商指标不会被转写为 P110/406 实验结论。
 
 ## 实验范围必须严格区分
 
@@ -146,12 +159,14 @@ flowchart LR
 
 ## 公开数据版本
 
-原始实验文件不写入 Git 历史，而是作为不可变 Release 附件公开。
+原始实验文件不写入 Git 历史。每套冻结数据同时提供可引用的 Zenodo 独立归档和字节一致的 GitHub Release 镜像。
 
-| Release | 内容 | 程序入口 |
-|---|---|---|
-| [v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) | P110 EXP2 磁数据与应变片全量包 | ZIP 内的 `dataset_index.json` |
-| [v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) | 406 标定 MEM/剩磁+应变，以及 17 包盲测 MEM/剩磁/ETP | `release_index.json`、`raw_file_manifest.csv`、`SHA256SUMS.txt` |
+| 数据集 | 可引用 Zenodo 归档 | GitHub 镜像 | 内容 | 首要入口 |
+|---|---|---|---|---|
+| P110 EXP2 | [10.5281/zenodo.22167582](https://doi.org/10.5281/zenodo.22167582) | [v0.2.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) | 三轴磁传感 + 应变片 | ZIP 内的 `dataset_index.json` |
+| 406 | [10.5281/zenodo.22167685](https://doi.org/10.5281/zenodo.22167685) | [v0.3.0](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) | 标定 MEM/剩磁/应变 + 盲测 MEM/剩磁/ETP | `release_index.json`、`raw_file_manifest.csv`、`SHA256SUMS.txt` |
+
+统一 DOI 对照与模态边界见[数据与软件 DOI](docs/DATA_DOIS.md)。
 
 禁止通过文件名重新猜阶段。必须从公开索引读取，并原样保留缺失阶段和 QC 失败。
 
@@ -198,10 +213,10 @@ d = loadStressDataset('lake/dataset_index.json');
 
 项目作者为 **Bin Gao，电子科技大学（UESTC）**。GitHub 的“Cite this repository”入口读取 [CITATION.cff](CITATION.cff)。持续更新的项目建议引用[概念 DOI：10.5281/zenodo.22162166](https://doi.org/10.5281/zenodo.22162166)；如需精确引用 `v0.4.1` 软件快照，请使用[版本 DOI：10.5281/zenodo.22162167](https://doi.org/10.5281/zenodo.22162167)。
 
-> Zenodo `v0.4.1` 记录归档的是 GitHub 源码快照。P110 与 406 的大型冻结原始数据包仍分别存放在 GitHub [P110 `v0.2.0`](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.2.0) 和 [406 `v0.3.0`](https://github.com/dctthree/pipe-stress-data-platform/releases/tag/v0.3.0) Release 中，未打包进本次软件 DOI。
+> Zenodo `v0.4.1` 记录只归档软件源码快照。P110 与 406 原始数据分别归档在独立、可引用的 Zenodo 数据集记录中，同时保留 GitHub Release 镜像。使用程序时引用软件 DOI，使用实验数据时引用对应数据集 DOI；两者同时使用时应同时引用。
 
 - 软件代码：[Apache License 2.0](LICENSE)
 - 实验数据、表格、结果图、照片和数据说明：[CC BY 4.0](DATA_LICENSE.md)
 - 推荐署名：`Gao, Bin (2026). Pipe Stress Sensing Benchmark & Data Platform. UESTC.`，并附仓库链接、冻结版本号和校验值/数据指纹。
 
-Git 中只保存代码、格式、模板、测试、小型派生表、结果图和说明；原始实验文件与大型压缩包放在 GitHub Releases，并采用同一数据许可证及各版本声明的证据边界。
+Git 中只保存代码、格式、模板、测试、小型派生表、结果图和说明；原始实验文件与大型压缩包归档在独立 Zenodo 数据集并镜像到 GitHub Releases，采用同一数据许可证及各版本声明的证据边界。
